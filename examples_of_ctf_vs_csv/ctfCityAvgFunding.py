@@ -3,7 +3,7 @@ import ctf
 # CTF version of a program that reads in a csv file with data on venture capital funding and computes
 # the average amount of a funding each american city has then prints it
 
-with Ctf.DictReader("TechCrunchcontinentalUSA.csv") as reader:
+with Ctf.DictReader("TechCrunchcontinentalUSA.ctf") as reader:
     
     cities = {} #dictionary with key as city and two values as count and total amount of funding
 
