@@ -137,10 +137,18 @@ issues formatting so I am starting over
   }
   }, {
     "url": "Name.txt",
-    "description": "The name of the video game."
+    "tableSchema": {
+      "columns": [{
+      "titles": "Name",
+      "description": "The name of the video game."
+      }]
   }, {
     "url": "Platform.txt",
-    "description": "The type of device or console the came is played on."
+    "tableSchema": {
+      "columns": [{
+      "titles": "Platform",
+      "description": "The type of device or console the game is played on."
+      }]
   }]
 }
 
