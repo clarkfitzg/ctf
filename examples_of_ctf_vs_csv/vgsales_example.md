@@ -110,7 +110,8 @@ example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because i
     "columns": [{
       "titles": "Platform",
       "description": "The type of device or console the came is played on."
-    }]}
+    }]
+  }]
 
 }
 
