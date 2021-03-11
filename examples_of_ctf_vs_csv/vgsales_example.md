@@ -144,11 +144,6 @@ issues formatting so I am starting over
       }]
   }, {
     "url": "Platform.txt",
-    "tableSchema": {
-      "columns": [{
-      "titles": "Platform",
-      "description": "The type of device or console the game is played on."
-      }]
   }]
 }
 
