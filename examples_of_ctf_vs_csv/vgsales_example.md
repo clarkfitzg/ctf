@@ -92,27 +92,28 @@ example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because i
   "tables": [{
     "url": "Rank.txt",
     "tableSchema": {
-    "columns": [{
+      "columns": [{
       "titles": "Rank",
       "description": "The rank of different video games based on their global sales.",
       "datatype": "integer"
-    }]
-  }, {
+      }]
+    }, {
     "url": "Name.txt",
     "tableSchema": {
-    "columns": [{
+      "columns": [{
       "titles": "Name",
       "description": "The name of the video game."
-    }]
-  }, {
+      }]
+    }
+    }, {
     "url": "Platform.txt",
     "tableSchema": {
-    "columns": [{
+      "columns": [{
       "titles": "Platform",
       "description": "The type of device or console the came is played on."
-    }]
+      }]}
+    }
   }]
-
 }
 
 ```
