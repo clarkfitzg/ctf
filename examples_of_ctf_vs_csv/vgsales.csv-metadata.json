@@ -1,0 +1,69 @@
+{
+       	"@context": "http://www.w3.org/ns/csvw",
+	"url": "vgsales.csv"
+	"tableSchema": {
+		"columns": [{
+			"titles": "Rank",
+			"description": "The rank of different video games based on their global sales.", 
+			"datatype": {
+				"base": "number",
+				"minimum": "1"
+				}
+			}, {
+			"titles": "Name",
+			"description": "The name of the video game."
+			}, {
+			"titles": "Platform",
+			"description": "The type of device or console the came is played on."
+			}, {
+			"titles": "Year",
+			"description": "The year the game was released.",
+			"datatype": {
+				"base": "gYear",
+				"minimum": "1958"
+				}
+			}, {
+			"titles": "Genre",
+			"description": "The genre of the game."
+			}, {
+			"titles": "Publisher",
+			"description": "The company that published the game."
+			}, {
+			"titles": "NA_Sales",
+			"description": "The sales of the game in millions of units in North America.",
+			"datatype":{
+				"base": "number",
+				"minimum": "0"
+				}
+			}, {
+			"titles": "EU_Sales",
+			"description": "The sales of the game in millions of units in Europe.",
+			"datatype":{
+				"base": "number",
+ 		        	"minimum": "0"
+				}
+			}, {
+		       "titles": "JP_Sales",
+		       "description": "The sales of the game in millions of units in Japan.",
+                       "datatype":{
+				 "base": "number",								
+				 "minimum": "0"
+		       		}
+			}, {
+                       "titles": "Other_Sales",
+		       "description": "The sales of the game in millions of units in places outside of Europe, North America, and Japan..",
+		       "datatype":{
+			 	  "base": "number",
+  			 	  "minimum": "0"
+		       		}
+			}, {
+			"titles": "Global_Sales",
+			"description": "The sales of the game in millions of units globally.",
+			"datatype":{
+				"base": "number",
+				"minimum": "0"
+				}
+			}]
+		}
+	}
+
