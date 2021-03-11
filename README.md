@@ -1,3 +1,17 @@
+# CTF - column text format
+
+CTF stores the columns of tabular data in plain text, combining the simplicity of text with the performance of a column store.
+
+## Simple Example
+
+Suppose you want to compute the maximum value in one column of a table with 10 columns.
+CTF only reads in this column, so it's around 10 times faster than CSV, which must read in the entire data set.
+
+TODO: show code, make sure it's 10 times faster. 😁
+
+
+
+
 # Search times
 
 - Searched 1 columns with 431644 rows in 0.26 seconds
