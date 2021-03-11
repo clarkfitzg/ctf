@@ -118,6 +118,27 @@ example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because i
 
 ```
 
+issues formatting so I am starting over 
+```JSON
+
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "title": "Unemployment in Europe (monthly)"
+  "description": "Data on the highest selling video games around the world."
+  "creator": "Unkown",
+  "tables": [{
+    "url": "Rank.txt",
+    "description": "The rank of different video games based on their global sales."
+  }, {
+    "url": "Name.txt",
+    "description": "The name of the video game."
+  }, {
+    "url": "Platform.txt",
+    "description": "The type of device or console the came is played on."
+  }]
+}
+
+
 ```
 
 
