@@ -123,12 +123,18 @@ issues formatting so I am starting over
 
 {
   "@context": "http://www.w3.org/ns/csvw",
-  "title": "Unemployment in Europe (monthly)"
+  "title": "vgsales"
   "description": "Data on the highest selling video games around the world."
-  "creator": "Unkown",
+  "creator": "Unknown",
   "tables": [{
     "url": "Rank.txt",
-    "description": "The rank of different video games based on their global sales."
+    "tableSchema": {
+      "columns": [{
+      "titles": "Rank",
+      "description": "The rank of different video games based on their global sales."
+      "datatype": "integer"
+      }]
+  }
   }, {
     "url": "Name.txt",
     "description": "The name of the video game."
