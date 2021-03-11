@@ -85,7 +85,7 @@ The CTF version of `vgsales`. Also I sort of drifted from your version and made 
 example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because it seemed like it would fit their standards more.
 
 
-``JSON
+```JSON
 {
   "titles": "vgsales",
   "description": "Data on the highest selling video games around the world.",
