@@ -96,14 +96,14 @@ example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because i
       "titles": "Rank",
       "description": "The rank of different video games based on their global sales.",
       "datatype": "integer"
-      }]
+      }]}
     }, {
     "url": "Name.txt",
     "tableSchema": {
       "columns": [{
       "titles": "Name",
       "description": "The name of the video game."
-      }]
+      }]}
     }
     }, {
     "url": "Platform.txt",
@@ -117,6 +117,9 @@ example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because i
 }
 
 ```
+
+```
+
 
 
 
