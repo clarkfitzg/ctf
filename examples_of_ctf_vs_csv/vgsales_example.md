@@ -94,25 +94,25 @@ example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because i
     "url": "Rank.txt",
     "tableSchema": {
       "columns": [{
-      "titles": "Rank",
-      "description": "The rank of different video games based on their global sales."
-      "datatype": "integer"
+	"titles": "Rank",
+	"description": "The rank of different video games based on their global sales."
+	"datatype": "integer"
       }]
   }
   }, {
     "url": "Name.txt",
     "tableSchema": {
       "columns": [{
-      "titles": "Name",
-      "description": "The name of the video game."
+	"titles": "Name",
+	"description": "The name of the video game."
       }]
   } 
   }, {
     "url": "Platform.txt",
     "tableSchema": {
       "columns": [{
-      "titles": "Platform",
-      "description": "The type of device or console the game is played on."
+	"titles": "Platform",
+	"description": "The type of device or console the game is played on."
       }]
   }
   }]
@@ -124,7 +124,7 @@ example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because i
 
 
 
-
+The first few rows of `vgsales` CSV file
 ```CSV
 Rank,Name,Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,Global_Sales
 1,Wii Sports,Wii,2006,Sports,Nintendo,41.49,29.02,3.77,8.46,82.74
@@ -133,9 +133,58 @@ Rank,Name,Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,G
 4,Wii Sports Resort,Wii,2009,Sports,Nintendo,15.75,11.01,3.28,2.96,33
 5,Pokemon Red/Pokemon Blue,GB,1996,Role-Playing,Nintendo,11.27,8.89,10.22,1,31.37
 ```
+The CSV file would be repsented in CTF by a directory named `vgsales` and would contain files for each column like this.
+
+`Rank.txt` contains 
+```
+1
+2
+3
+4
+5
+```
+
+`Name.txt` contains 
+```
+Wii Sports
+Super Mario Bros.
+Mario Kart Wii
+Wii Sports Resort
+Pokemon Red/Pokemon Blue
+```
+`Platform` contains
+```
+Wii
+NES
+Wii
+Wii
+GB
+```
+
+
+`Year.txt` contains 
+```
+2006
+1985
+2008
+2009
+1996
+```
+This is continued in a similar manner until the final column, `Global_Sales` which will be represented below
+
+`Global_Sales` contains
+```
+
+82.74
+40.24
+35.82
+33
+31.37
+```
 
 
 
+Dr. Fitzgerald's comments that I'm keeping at the bottom so I can reference.
 Add a couple more columns, show the original CSV file and how ctf represents it.
 We only need a handful of rows.
 
