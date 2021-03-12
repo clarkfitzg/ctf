@@ -82,7 +82,7 @@ what the first few rows of the `vgsales` CSV file looks like.
 }
 ```
 The CTF version of `vgsales`. Also I sort of drifted from your version and made what looks like a mix of 
-example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because it seemed like it would fit their standards more.
+example 8,18 and 35 from [w3](https://www.w3.org/TR/tabular-data-primer/) because it seemed like it would fit their standards more.
 
 ```JSON
 {
@@ -124,7 +124,7 @@ example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because i
 
 
 
-The first few rows of `vgsales` CSV file
+The first five rows of `vgsales` CSV file
 ```CSV
 Rank,Name,Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,Global_Sales
 1,Wii Sports,Wii,2006,Sports,Nintendo,41.49,29.02,3.77,8.46,82.74
@@ -133,7 +133,7 @@ Rank,Name,Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,G
 4,Wii Sports Resort,Wii,2009,Sports,Nintendo,15.75,11.01,3.28,2.96,33
 5,Pokemon Red/Pokemon Blue,GB,1996,Role-Playing,Nintendo,11.27,8.89,10.22,1,31.37
 ```
-The CSV file would be repsented in CTF by a directory named `vgsales` and would contain files for each column like this.
+The CSV file would be repsented in CTF by a directory named `vgsales` and would contain files for each column like this (only the first five rows are shown).
 
 `Rank.txt` contains 
 ```
@@ -152,7 +152,7 @@ Mario Kart Wii
 Wii Sports Resort
 Pokemon Red/Pokemon Blue
 ```
-`Platform` contains
+`Platform.txt` contains
 ```
 Wii
 NES
@@ -172,7 +172,7 @@ GB
 ```
 This is continued in a similar manner until the final column, `Global_Sales` which will be represented below
 
-`Global_Sales` contains
+`Global_Sales.txt` contains
 ```
 
 82.74
@@ -192,4 +192,136 @@ We only need a handful of rows.
 ## Value constraints
 
 The minimum value is 1 for rank.
+
+We will now add a contraint on our Rank column to insure that there are no values below 1 since this is not possible. 
+
+CSV implementation
+```JSON
+{
+       	"@context": "http://www.w3.org/ns/csvw",
+	"url": "vgsales.csv",
+	"tableSchema": {
+		"columns": [{
+			"titles": "Rank",
+			"description": "The rank of different video games based on their global sales.", 
+			"datatype": {
+				"base": "integer",
+				"minimum": "1"
+				}
+			}, {
+			"titles": "Name",
+			"description": "The name of the video game."
+			}, {
+			"titles": "Platform",
+			"description": "The type of device or console the came is played on."
+			}]
+	}
+}
+```
+
+CTF implementation
+```JSON
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "title": "vgsales"
+  "description": "Data on the highest selling video games around the world."
+  "creator": "Gregory Smith",
+  "tables": [{
+    "url": "Rank.txt",
+    "tableSchema": {
+      "columns": [{
+	"titles": "Rank",
+	"description": "The rank of different video games based on their global sales."
+	"datatype": {
+	  "base": "integer",
+	  "minimum": "1"	
+	}
+      }]
+  }
+  }, {
+    "url": "Name.txt",
+    "tableSchema": {
+      "columns": [{
+	"titles": "Name",
+	"description": "The name of the video game."
+      }]
+  } 
+  }, {
+    "url": "Platform.txt",
+    "tableSchema": {
+      "columns": [{
+	"titles": "Platform",
+	"description": "The type of device or console the game is played on."
+      }]
+  }
+  }]
+}
+```
+We will also show how to specify unique values for each row in a column. We can do this using a primary key to refer to the name of thecolumn. In our example we will specify that the rank if unique.
+
+CSV implementation
+```JSON
+{
+        "@context": "http://www.w3.org/ns/csvw",
+        "url": "vgsales.csv",
+        "tableSchema": {
+                "columns": [{
+			"name": "Rank",
+                        "titles": "Rank",
+                        "description": "The rank of different video games based on their global sales.",
+                        "datatype": {
+                                "base": "integer",
+                                "minimum": "1"
+                                }
+                        }, {
+                        "titles": "Name",
+                        "description": "The name of the video game."
+                        }, {
+                        "titles": "Platform",
+                        "description": "The type of device or console the came is played on."
+                        }],
+			"primaryKey": "Rank"
+        }
+}
+```
+
+CTF implementation
+```JSON
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "title": "vgsales"
+  "description": "Data on the highest selling video games around the world."
+  "creator": "Gregory Smith",
+  "tables": [{
+    "url": "Rank.txt",
+    "tableSchema": {
+      "columns": [{
+        "name": "Rank"
+        "titles": "Rank",
+        "description": "The rank of different video games based on their global sales."
+        "datatype": {
+          "base": "integer",
+          "minimum": "1"
+        }
+      }],
+      "primaryKey": "Rank"
+  }
+  }, {
+    "url": "Name.txt",
+    "tableSchema": {
+      "columns": [{
+        "titles": "Name",
+        "description": "The name of the video game."
+      }]
+  }
+  }, {
+    "url": "Platform.txt",
+    "tableSchema": {
+      "columns": [{
+        "titles": "Platform",
+        "description": "The type of device or console the game is played on."
+      }]
+  }
+  }]
+}
 
