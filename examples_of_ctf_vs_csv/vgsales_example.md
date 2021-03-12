@@ -125,11 +125,9 @@ issues formatting so I am starting over
   "title": "Video Game sales"
   "title": "vgsales"
   "description": "Data on the highest selling video games around the world."
-  "creator": "Unkown",
   "creator": "Unknown",
   "tables": [{
     "url": "Rank.txt",
-    "description": "The rank of different video games based on their global sales."
     "tableSchema": {
       "columns": [{
       "titles": "Rank",
@@ -139,10 +137,22 @@ issues formatting so I am starting over
   }
   }, {
     "url": "Name.txt",
-    "description": "The name of the video game."
+    "tableSchema": {
+      "columns": [{
+      "titles": "Rank",
+      "description": "The rank of different video games based on their global sales."
+      "datatype": "integer"
+      }]
+  } 
   }, {
     "url": "Platform.txt",
-    "description": "The type of device or console the came is played on."
+    "tableSchema": {
+      "columns": [{
+      "titles": "Rank",
+      "description": "The rank of different video games based on their global sales."
+      "datatype": "integer"
+      }]
+  }
   }]
 }
 
