@@ -144,7 +144,7 @@ issues formatting so I am starting over
       }]
   }, {
     "url": "Platform.txt",
-  }]
+  }]}
 }
 
 
