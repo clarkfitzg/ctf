@@ -120,14 +120,16 @@ example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because i
 
 issues formatting so I am starting over 
 ```JSON
-
 {
   "@context": "http://www.w3.org/ns/csvw",
+  "title": "Video Game sales"
   "title": "vgsales"
   "description": "Data on the highest selling video games around the world."
+  "creator": "Unkown",
   "creator": "Unknown",
   "tables": [{
     "url": "Rank.txt",
+    "description": "The rank of different video games based on their global sales."
     "tableSchema": {
       "columns": [{
       "titles": "Rank",
@@ -137,15 +139,13 @@ issues formatting so I am starting over
   }
   }, {
     "url": "Name.txt",
-    "tableSchema": {
-      "columns": [{
-      "titles": "Name",
-      "description": "The name of the video game."
-      }]
+    "description": "The name of the video game."
   }, {
     "url": "Platform.txt",
-  }]}
+    "description": "The type of device or console the came is played on."
+  }]
 }
+
 
 
 ```
