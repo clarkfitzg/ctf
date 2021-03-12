@@ -84,48 +84,12 @@ what the first few rows of the `vgsales` CSV file looks like.
 The CTF version of `vgsales`. Also I sort of drifted from your version and made what looks like a mix of 
 example 8 and 18 from [w3](https://www.w3.org/TR/tabular-data-primer/) because it seemed like it would fit their standards more.
 
-
-```JSON
-{
-  "titles": "vgsales",
-  "description": "Data on the highest selling video games around the world.",
-  "tables": [{
-    "url": "Rank.txt",
-    "tableSchema": {
-      "columns": [{
-      "titles": "Rank",
-      "description": "The rank of different video games based on their global sales.",
-      "datatype": "integer"
-      }]}
-    }, {
-    "url": "Name.txt",
-    "tableSchema": {
-      "columns": [{
-      "titles": "Name",
-      "description": "The name of the video game."
-      }]}
-    }
-    }, {
-    "url": "Platform.txt",
-    "tableSchema": {
-      "columns": [{
-      "titles": "Platform",
-      "description": "The type of device or console the came is played on."
-      }]}
-    }
-  }]
-}
-
-```
-
-issues formatting so I am starting over 
 ```JSON
 {
   "@context": "http://www.w3.org/ns/csvw",
-  "title": "Video Game sales"
   "title": "vgsales"
   "description": "Data on the highest selling video games around the world."
-  "creator": "Unknown",
+  "creator": "Gregory Smith",
   "tables": [{
     "url": "Rank.txt",
     "tableSchema": {
@@ -139,18 +103,16 @@ issues formatting so I am starting over
     "url": "Name.txt",
     "tableSchema": {
       "columns": [{
-      "titles": "Rank",
-      "description": "The rank of different video games based on their global sales."
-      "datatype": "integer"
+      "titles": "Name",
+      "description": "The name of the video game."
       }]
   } 
   }, {
     "url": "Platform.txt",
     "tableSchema": {
       "columns": [{
-      "titles": "Rank",
-      "description": "The rank of different video games based on their global sales."
-      "datatype": "integer"
+      "titles": "Platform",
+      "description": "The type of device or console the game is played on."
       }]
   }
   }]
