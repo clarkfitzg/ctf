@@ -1,6 +1,9 @@
 import csv 
 # a program that reads in a csv file with data on venture capital funding and computes
 # the average amount of a funding each american city has then prints it
+# this program is equivalent to the SQL query 
+# SELECT sum(capital) FROM techcrucnch GROUP BY city
+
 
 with open("TechCrunchcontinentalUSA.csv", newline='') as csvfile:
     reader = csv.DictReader(csvfile)
