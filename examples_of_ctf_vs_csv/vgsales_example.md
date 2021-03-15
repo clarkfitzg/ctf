@@ -87,7 +87,7 @@ example 8,18 and 35 from [w3](https://www.w3.org/TR/tabular-data-primer/) becaus
 ```JSON
 {
   "@context": "http://www.w3.org/ns/csvw",
-  "title": "vgsales"
+  "title": "vgsales",
   "description": "Data on the highest selling video games around the world."
   "creator": "Gregory Smith",
   "tables": [{
