@@ -7,7 +7,34 @@ CTF stores the columns of tabular data in plain text, combining the simplicity o
 Suppose you want to compute the maximum value in one column of a table with 10 columns.
 CTF only reads in this column, so it's around 10 times faster than CSV, which must read in the entire data set.
 
-TODO: show code, make sure it's 10 times faster. 😁
+Things to show (our killer features):
+
+1. CTF code is around 10 times faster than CSV.
+2. CTF we don't need to specify types.
+3. CTF code is more concise than CSV.
+
+
+CTF:
+
+```python
+import column_text_format as ctf
+
+c1 = ctf.reader("Xbigtable")["Ynumeric_column"]
+
+mc1 = max(c1)
+print(mc1)
+```
+
+
+CSV:
+
+```python
+TODO:
+with open("Xbigtable.tcsv")
+    ... 
+```
+
+
 
 
 
