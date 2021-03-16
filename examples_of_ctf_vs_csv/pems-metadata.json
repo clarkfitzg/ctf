@@ -1,0 +1,16 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "tableSchema": "pems-schema.json",
+  "compression": "gzip",
+  "tableRowChunks": [{
+    "url": "/scratch/pems/district4/2016_08_24.txt.gz"
+    , "numberRecords": 9535667
+    , "bytes": 102255946
+  }, {
+    "url": "/scratch/pems/district4/2016_08_25.txt.gz"
+    , "numberRecords": 9535002
+    , "bytes": 102212018
+  },
+  "... several hundred more ..."
+  ]
+}

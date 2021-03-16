@@ -1,0 +1,13 @@
+The metadata in listing~\ref{lst:pems-metadata} describes the location, format, organization, and schema of the data.
+Location in this case is many files on disk.
+Format is compressed text, csv files.
+Organization is by date that the sensor observations came in.
+The schema and descriptions are in Listing~\ref{lst:pems-schema}.
+
+\lstinputlisting[caption={\texttt{pems-metadata.json} contains the metadata for all the individual data files.}, label=lst:pems-metadata]{examples/pems/pems-metadata.json}
+
+\lstinputlisting[caption={\texttt{pems-schema.json} contains the schemas for the tables.}, label=lst:pems-schema]{examples/pems/pems-schema.json}
+
+The data may already physically organized so that we can do the \texttt{by()} computation.
+If it was, then we would say this in listing~\ref{lst:pems-metadata}, perhaps by an entry such as \texttt{"partition": "station"}, where \texttt{"station"} is the name of the grouping column.
+If it isn't grouped then we first need to group it, and this requires one complete pass through the data.
