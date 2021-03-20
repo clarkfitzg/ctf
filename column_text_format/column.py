@@ -1,5 +1,6 @@
 import os
 
+
 class Column:
     '''
     The column object is returned as an iterable for each column that needs to be accessed. 

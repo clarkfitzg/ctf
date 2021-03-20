@@ -2,9 +2,9 @@ import csv
 import os
 import time
 import glob
-from column import Column
+from column_text_format.column import Column
 
-class Ctf:
+class Reader:
     '''
     This class will be used to convert to and from Ctf files
     '''
