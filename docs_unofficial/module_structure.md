@@ -16,10 +16,12 @@ x = ctf.column.Column
 ```
 
 If we have a directory structure like this:
+```
 column_text_format/
     __init__.py
     column.py
     reader.py
+```
 We can use imports to have reader.py use a class from column.py called Column. Within column_text_format/reader.py import using relative import using:
 ```python
 from .column import Column
@@ -46,3 +48,14 @@ rows = csv.reader(file_name)
 for row in rows:
     print(row)
 ```
+
+## CTF directory structure
+To mimick how csv imports work with its reader() and writer() functions while still maintaining seperate files for classes we will need to use the structure below.
+```
+column_text_format/
+    __init__.py
+    ctf.py
+    writer.py
+    reader.py
+```
+Within ctf.py we can write functions like reader() and writer() that will return objects from reader.py and writer.py respectively. 
