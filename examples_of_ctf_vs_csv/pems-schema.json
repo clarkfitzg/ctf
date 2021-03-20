@@ -1,0 +1,34 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "tableSchema": {
+    "columns": [
+      {
+        "titles": "time",
+        "datatype": {"base": "dateTime",
+            "format": "MM/dd/yyyy HH:mm:ss"
+        },
+        "dc:description": "End of the time period that was reported, so that the observations are typically from the previous 30 seconds"
+      },
+      {
+        "titles": "station",
+        "datatype": {"base": "positiveInteger",
+            "minimum": 300000,
+            "maximum": 499999
+        },
+        "dc:description": "Station ID"
+      },
+      {
+        "titles": "flow",
+        "datatype": "nonNegativeInteger",
+        "dc:description": "Number of vehicles to pass over the detector"
+      },
+      {
+        "titles": "occupancy",
+        "datatype": {"base": "decimal",
+            "minimum": 0,
+            "maximum": 1
+        },
+        "dc:description": "Proportion of time that a detector had a vehicle on it"
+      }
+    ]
+}
