@@ -28,14 +28,10 @@ pip3 install dist/[wheel_file_name].whl --upgrade
 Now when you run ```import ctf``` this will be your latest version.
 
 ## Upload to Test PyPi
-TestPyPi is a test version of PyPi that you can upload and install test packages to and from. Use this for getting up to speed before uploading to PyPi.
+TestPyPi is a test version of PyPi that you can upload and install test packages to and from. Use this package index for getting up to speed before uploading to PyPi.
 ```bash
 python3 -m twine upload --repository testpypi dist/*
 ```
 
 ## Upload to PyPi 
-For uploading to the official Python Package Index PyPi use the command below.
-```bash
-python3 -m twine upload dist/*
-```
-When you upload to PyPi
+For uploading to the official Python Package Index PyPi use ```python3 -m twine upload dist/*``` Remember to update the version if this fails to publish.
