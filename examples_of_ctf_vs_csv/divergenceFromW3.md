@@ -123,7 +123,7 @@ This is how a JSON implementation of the stated would look.
                                 "minimum": "1"
                                 }
                         }, {
-			"url": "Name.txt"
+			"url": "Name.txt",
                         "titles": "Name",
                         "description": "The name of the video game."
                         }, {
@@ -138,7 +138,7 @@ This is how a JSON implementation of the stated would look.
                                 "minimum": "1958"
                                 }
                         }, {
-			"url": "Global_Sales.txt"
+			"url": "Global_Sales.txt",
                         "titles": "Global_Sales",
                         "description": "The sales of the game in millions of units globally.",
                         "datatype":{
@@ -150,15 +150,15 @@ This is how a JSON implementation of the stated would look.
 }
 ```
 Since it is possible to have multiple files represent one column (if there is a lot of data we will break
-up a single column into many seperate txt files) so we will need to alter the "url" field to show all the 
+up a single column into many seperate txt files) we will need to alter the "url" field to show all the 
 files that correspond to an individual columnFile. We will store the files in an array strucutre since the 
-indexing matters. Moreover, to keep the format simple for those who are note working with large amounts of 
-data we can have a default since W3C uses defaulting. If an array is placed in the "url" field then we know
-that there are multiple text files corresponding to the single columnFile. Otherwise, we will keep it as the 
-example above shows. 
+indexing matters. Moreover, to keep the format simple for those who are not working with large amounts of 
+data we can have a default since W3C uses defaulting (for instance, if nothing is put in "datatype" it will asume that 
+the "datatype is a string). If an array is placed in the "url" field then we know that there are multiple text 
+files corresponding to the single columnFile. Otherwise, we will keep it as the example above shows. 
 
-This is an example with many text files per column file. I'm not sure how we want to name the files if there 
-are many of them so I just put a "_int" to repsent them 
+This is an example with many text files per columnFile. I'm not sure how we want to name the files if there 
+are many of them so I just put a "_int" to represent them. 
 
 ```JSON
 {
@@ -174,14 +174,14 @@ are many of them so I just put a "_int" to repsent them
                                 "minimum": "1"
                                 }
                         }, {
-                        "url": ["Name_1.txt", "Name_2.txt", "Name_3.txt"] 
+                        "url": ["Name_1.txt", "Name_2.txt", "Name_3.txt"], 
                         "titles": "Name",
                         "description": "The name of the video game."
                         }, {
                         "titles": "Platform",
                         "description": "The type of device or console the came is played on."
                         }, {
-                        "url": ["Year_1.txt","Year_2.txt","Year_3.txt"]
+                        "url": ["Year_1.txt","Year_2.txt","Year_3.txt"],
                         "titles": "Year",
                         "description": "The year the game was released.",
                         "datatype": {
@@ -189,7 +189,7 @@ are many of them so I just put a "_int" to repsent them
                                 "minimum": "1958"
                                 }
                         }, {
-                        "url": ["Global_Sales_1.txt","Global_Sales_2.txt","Global_Sales_3.txt"]
+                        "url": ["Global_Sales_1.txt","Global_Sales_2.txt","Global_Sales_3.txt"],
                         "titles": "Global_Sales",
                         "description": "The sales of the game in millions of units globally.",
                         "datatype":{
@@ -201,9 +201,9 @@ are many of them so I just put a "_int" to repsent them
 }
 ```
 
-The main advantage of this is formatting is that it is rather simple and feels a lot like how 
-one would work with a single csv. The disadvantage, that I personally see since I may be missing
-some, is that it differs in the way that W3C recommends one follow if they have multiple csv files.
+The main advantage of this is the formatting is rather simple and feels a lot like how 
+one would work with a single CSV file. The disadvantage, that I personally see since I may be missing
+some, is that it differs in the way that W3C recommends one follow if they have multiple CSV files.
 
 Here is an example from their website (example 35) of how they handle multiple CSV files. 
 
