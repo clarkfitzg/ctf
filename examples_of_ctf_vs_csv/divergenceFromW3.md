@@ -13,7 +13,7 @@ Rank,Name,Platform,Year, Global_Sales
 5,Pokemon Red/Pokemon Blue,GB,1996,31.37
 ```
 ## Example CTF
-The CSV file would be repsented in CTF by a directory named `vgsales` and would contain files for each column like this (only the first five rows are shown).
+The CSV file would be repsented in CTF by a directory named `vgsales` and would contain files for each column like this.
 
 `Rank.txt` contains 
 ```
