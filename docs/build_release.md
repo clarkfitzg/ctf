@@ -11,19 +11,31 @@ Building the program will create two files under dist/ "the tar.gz file is a Sou
 python3 -m build
 ```
 
+## Versioning
+Whenever you build your package needs to have a version, you specify this in setup.py using this syntax
+```python
+setup(
+    version = "0.0.2",
+    # Other settings...
+```
+When you are installing locally there is no need to change this version, however, when you upload to PyPi the version must be increased each time or the upload will fail. Because of this we want to avoid uploading to PyPi too often. To test your changes always run them locally until they are completely finished, and if you need to try uploading to the cloud, use Test PyPi instead of the offical PyPi. Having control over what is available to the public ensures that if they go back to a previous version it will still run.
+
 ## Install Locally
-To install this wheel locally for testing all you need to do is install the Wheel through pip.
+To install this wheel locally for testing all you need to do is install the wheel through pip.
 ```bash
 pip3 install dist/[wheel_file_name].whl --upgrade
 ```
 Now when you run ```import ctf``` this will be your latest version.
 
-## Upload to PyPi
+## Upload to Test PyPi
 TestPyPi is a test version of PyPi that you can upload and install test packages to and from. Use this for getting up to speed before uploading to PyPi.
 ```bash
 python3 -m twine upload --repository testpypi dist/*
 ```
-For uploading to PyPi use the same command without the repository argument.
+
+## Upload to PyPi 
+For uploading to the official Python Package Index PyPi use the command below.
 ```bash
 python3 -m twine upload dist/*
 ```
+When you upload to PyPi
