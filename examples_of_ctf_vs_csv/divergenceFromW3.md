@@ -130,7 +130,7 @@ This is how a JSON implementation of the stated would look.
                         "titles": "Platform",
                         "description": "The type of device or console the came is played on."
                         }, {
-			"url": "Year.txt"
+			"url": "Year.txt",
                         "titles": "Year",
                         "description": "The year the game was released.",
                         "datatype": {
@@ -247,16 +247,16 @@ Thus we could try and mimic this format and simply replace the CSV files with tx
 ```JSON
 {
   "@context": "http://www.w3.org/ns/csvw",
-  "title": "vgsales"
-  "description": "Data on the highest selling video games around the world."
+  "title": "vgsales",
+  "description": "Data on the highest selling video games around the world.",
   "creator": "Gregory Smith",
   "tables": [{
     "url": "Rank.txt",
     "tableSchema": {
       "columns": [{
-        "name": "Rank"
+        "name": "Rank",
         "titles": "Rank",
-        "description": "The rank of different video games based on their global sales."
+        "description": "The rank of different video games based on their global sales.",
         "datatype": {
           "base": "integer",
           "minimum": "1"
