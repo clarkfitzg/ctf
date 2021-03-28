@@ -2,6 +2,7 @@ import csv
 import os
 import time
 import glob
+import json
 from column_text_format.column import Column
 
 class Reader:
@@ -99,3 +100,9 @@ class Reader:
                 except Exception as e:
                     continue
         return return_list
+
+    def read_metadata(metadata_file = None):
+        if(metadata_file == None):
+            metadata_file = self.file_name + "-metadata.json"
+        with open(metadata_file as file):
+            json_data = json.load(file)
