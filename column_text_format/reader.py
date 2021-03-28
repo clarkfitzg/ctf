@@ -12,6 +12,10 @@ class Reader:
 
     def __init__(self, file_name):
         self.file_name = file_name
+        self.columns = []
+        for each_file in os.listdir(file_name):
+            if(each_file[-4:] == '.txt'):
+                self.columns.append(each_file[:-4])
 
     def __getitem__(self, column_key):
         '''Treats data like a dictionary, retuns iter when called as ctf_file['column']'''
