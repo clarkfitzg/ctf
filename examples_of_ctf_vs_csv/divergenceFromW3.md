@@ -1,5 +1,5 @@
 ## Overview
-We intend to model the structure of our metadata using the (W3C standards)[https://www.w3.org/TR/tabular-data-primer/] but we are not able to completely follow these standards since CTF is different from CSV. Thus, in this writing we will examine how we will differ from W3C and what the advanctages and disadvantages are in the way that we proceed with our format.
+We intend to model the structure of our metadata using the [W3C standards](https://www.w3.org/TR/tabular-data-primer/) but we are not able to completely follow these standards since CTF is different from CSV. Thus, in this writing we will examine how we will differ from W3C and what the advanctages and disadvantages are in the way that we proceed with our format.
 
 ## Example CSV
 The following is a CSV file,`vgsales.csv` that we will use to illustrate the differences.
@@ -112,7 +112,7 @@ This is how a JSON implementation of the stated would look.
 ```JSON
 {
         "@context": "http://www.w3.org/ns/csvw",
-        "dir": "vgsales.csv",
+        "dir": "vgsales",
         "tableSchema": {
             "columnFiles": [{
 			    "url": "Rank.txt",

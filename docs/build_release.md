@@ -33,5 +33,5 @@ TestPyPi is a test version of PyPi that you can upload and install test packages
 python3 -m twine upload --repository testpypi dist/*
 ```
 
-## Upload to PyPi 
+## Upload to PyPi
 For uploading to the official Python Package Index PyPi use ```python3 -m twine upload dist/*``` Remember to update the version if this fails to publish.
