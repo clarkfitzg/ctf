@@ -59,4 +59,4 @@ class Column:
 
     def convert_data_type(self, value):
         '''Converts value to the data_type found in metadata.json'''
-        self.data_type(value)
+        return self.data_type(value)

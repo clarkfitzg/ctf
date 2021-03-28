@@ -16,7 +16,13 @@ class Reader:
     def __getitem__(self, column_key):
         '''Treats data like a dictionary, retuns iter when called as ctf_file['column']'''
         full_path = os.path.join(self.file_name, column_key)
-        return Column(full_path)
+        try:
+            data_type = self.data_types[column_key]["base"]
+            if(data_type == 'integer'):
+                data_type = int
+            return Column(full_path, data_type=data_type)
+        except:
+            return Column(full_path)
 
     def __iter__(self):
         '''Will return an iterable of all columns'''
@@ -101,8 +107,22 @@ class Reader:
                     continue
         return return_list
 
-    def read_metadata(metadata_file = None):
+    def read_metadata(self, metadata_file = None):
+        '''When run this stores the metadata types for each column in
+        self.data_types as a dictionary of keys with the column name and the value as the dataType
+        from metadata.
+        '''
+        self.data_types = {}
+
         if(metadata_file == None):
-            metadata_file = self.file_name + "-metadata.json"
-        with open(metadata_file as file):
+            metadata_file = self.file_name + "/" + self.file_name + "-metadata.json"
+        with open(metadata_file) as file:
             json_data = json.load(file)
+        for column_file in json_data["tableSchema"]["columnFiles"]:
+            column_name = column_file["titles"]
+            try:
+                column_type = column_file["datatype"]
+                self.data_types[column_name] = column_type
+            except:
+                pass
+            

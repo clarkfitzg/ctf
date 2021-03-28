@@ -4,6 +4,7 @@ Make sure you install all the dependencies before you begin with the build/relea
 python3 -m pip install --upgrade build
 python3 -m pip install --user --upgrade twine
 ```
+Then make sure you are in the base directory for this repo.
 
 ## Build
 Building the program will create two files under dist/ "the tar.gz file is a Source Archive whereas the .whl file is a Built Distribution." [Source](https://packaging.python.org/tutorials/packaging-projects/)

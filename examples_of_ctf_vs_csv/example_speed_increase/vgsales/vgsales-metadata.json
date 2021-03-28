@@ -1,38 +1,55 @@
 {
-    "@context": "http://www.w3.org/ns/csvw",
-    "dir": "vgsales",
-    "tableSchema": {
-        "columnFiles": [{
-            "url": "Rank.txt",
-            "titles": "Rank",
-            "description": "The rank of different video games based on their global sales.",
-            "datatype": {
-                    "base": "integer",
-                    "minimum": "1"
-                    }
+	"@context": "http://www.w3.org/ns/csvw",
+	"dir": "vgsales",
+	"tableSchema": {
+		"columnFiles": [{
+			"url": "Rank.txt",
+			"titles": "Rank",
+			"description": "The rank of different video games based on their global sales.",
+			"datatype": {
+				"base": "integer",
+				"minimum": "1"
+			}
+		}, {
+			"url": "Name.txt",
+			"titles": "Name",
+			"description": "The name of the video game."
             }, {
-            "url": "Name.txt",
-            "titles": "Name",
-            "description": "The name of the video game."
-            }, {
-            "titles": "Platform",
-            "description": "The type of device or console the came is played on."
-            }, {
-            "url": "Year.txt",
-            "titles": "Year",
-            "description": "The year the game was released.",
-            "datatype": {
-                    "base": "gYear",
-                    "minimum": "1958"
-                    }
-            }, {
-            "url": "Global_Sales.txt",
-            "titles": "Global_Sales",
-            "description": "The sales of the game in millions of units globally.",
-            "datatype":{
-                    "base": "number",
-                    "minimum": "0"
-                    }
-            }]
-        }
+			"url": "Platform.txt",
+			"titles": "Platform",
+			"description": "The type of device or console the came is played on."
+		}, {
+			"url": "Year.txt",
+			"titles": "Year",
+			"description": "The year the game was released."
+		}, {
+			"url": "Global_Sales.txt",
+			"titles": "Global_Sales",
+			"description": "The sales of the game in millions of units globally."
+		}, {
+			"url": "Genre.txt",
+			"titles": "Genre",
+			"description": "The genre of the game."
+		}, {
+			"url": "Publisher.txt",
+			"titles": "Publisher",
+			"description": "The company that published the game."
+		}, {
+			"url": "NA_Sales.txt",
+			"titles": "NA_Sales",
+			"description": "The sales of the game in millions of units in North America."
+		}, {
+			"url": "NA_Sales.txt",
+			"titles": "EU_Sales",
+			"description": "The sales of the game in millions of units in Europe."
+		}, {
+			"url": "JP_Sales.txt",
+			"titles": "JP_Sales",
+			"description": "The sales of the game in millions of units in Japan."
+		}, {
+			"url": "Other_Sales.txt",
+			"titles": "Other_Sales",
+			"description": "The sales of the game in millions of units in places outside of Europe, North America, and Japan.."
+		}]
+	}
 }
