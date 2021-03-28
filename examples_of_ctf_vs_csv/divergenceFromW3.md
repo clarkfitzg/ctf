@@ -66,7 +66,7 @@ This is how its metadata would be written according to W3C standards
 
 ```JSON
 {
-       	"@context": "http://www.w3.org/ns/csvw",
+	"@context": "http://www.w3.org/ns/csvw",
 	"url": "vgsales.csv",
 	"tableSchema": {
 		"columns": [{
@@ -114,39 +114,39 @@ This is how a JSON implementation of the stated would look.
         "@context": "http://www.w3.org/ns/csvw",
         "dir": "vgsales.csv",
         "tableSchema": {
-                "columnFiles": [{
-			"url": "Rank.txt",
-                        "titles": "Rank",
-                        "description": "The rank of different video games based on their global sales.",
-                        "datatype": {
-                                "base": "integer",
-                                "minimum": "1"
-                                }
-                        }, {
-			"url": "Name.txt",
-                        "titles": "Name",
-                        "description": "The name of the video game."
-                        }, {
-                        "titles": "Platform",
-                        "description": "The type of device or console the came is played on."
-                        }, {
-			"url": "Year.txt",
-                        "titles": "Year",
-                        "description": "The year the game was released.",
-                        "datatype": {
-                                "base": "gYear",
-                                "minimum": "1958"
-                                }
-                        }, {
-			"url": "Global_Sales.txt",
-                        "titles": "Global_Sales",
-                        "description": "The sales of the game in millions of units globally.",
-                        "datatype":{
-                                "base": "number",
-                                "minimum": "0"
-                                }
-                        }]
-                }
+            "columnFiles": [{
+			    "url": "Rank.txt",
+                "titles": "Rank",
+                "description": "The rank of different video games based on their global sales.",
+                "datatype": {
+                        "base": "integer",
+                        "minimum": "1"
+                        }
+                }, {
+			    "url": "Name.txt",
+                "titles": "Name",
+                "description": "The name of the video game."
+                }, {
+                "titles": "Platform",
+                "description": "The type of device or console the came is played on."
+                }, {
+			    "url": "Year.txt",
+                "titles": "Year",
+                "description": "The year the game was released.",
+                "datatype": {
+                        "base": "gYear",
+                        "minimum": "1958"
+                        }
+                }, {
+                "url": "Global_Sales.txt",
+                "titles": "Global_Sales",
+                "description": "The sales of the game in millions of units globally.",
+                "datatype":{
+                        "base": "number",
+                        "minimum": "0"
+                        }
+                }]
+            }
 }
 ```
 Since it is possible to have multiple files represent one column (if there is a lot of data we will break
