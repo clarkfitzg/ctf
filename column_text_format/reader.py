@@ -57,7 +57,7 @@ class Reader:
 
     def convert_csv_to_ctf(self, csv_file):
         '''Conversion function for each .csv file'''
-        total_rows = 0
+        total_columns = 0
 
         start = time.time()
         # Gets folder name from csv
@@ -69,11 +69,11 @@ class Reader:
         with open(csv_file, 'r') as file:
             reader = csv.reader(file)
             for row in reader:
-                if (len(row) > total_rows):
-                    total_rows = len(row)
+                if (len(row) > total_columns):
+                    total_columns = len(row)
 
         # Writes rows to new files
-        for i in range(0,total_rows):
+        for i in range(0,total_columns):
             with open(csv_file, 'r') as file:
                 reader = csv.reader(file)
                 column_file = os.path.join(new_folder_name, f'column{i+1}.txt')
