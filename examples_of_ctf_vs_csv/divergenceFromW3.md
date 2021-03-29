@@ -287,7 +287,9 @@ However, this way is much more repetitive and cluttered than the previously show
 As one can observe, there are each url has its own "tableSchema" and "columns" but in the previously
 suggested format there is only one "tableSchema" and "columns" is instead denoted by a single structure 
 called "columnFiles" which encompasses all the files of the CTF directory. 
-It would get even more cluttered if each columnFile had several corresponding text files.
+It would get even more cluttered if each columnFile had several corresponding text files. For instance,
+if the columnFile Platform was so large that it had two text files, "Platform_1.txt" and "Platform_2.txt"
+associated with it, then there would be nearly identical tableSchemas  for two different urls.
 
 ## Where the metadata file will be stored
 The metadata file will be stored in the CTF directory and will have share the directory's name but will have -metadata.json appended to it. For instance, a CTF directory named `vgsales` would contain a metadata file named `vgsales-metadata.json`.
