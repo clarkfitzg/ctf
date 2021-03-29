@@ -284,6 +284,9 @@ Thus we could try and mimic this format and simply replace the CSV files with tx
 ```
 
 However, this way is much more repetitive and cluttered than the previously shown format.
+As one can observe, there are each url has its own "tableSchema" and "columns" but in the previously
+suggested format there is only one "tableSchema" and "columns" is instead denoted by a single structure 
+called "columnFiles" which encompasses all the files of the CTF directory. 
 It would get even more cluttered if each columnFile had several corresponding text files.
 
 ## Where the metadata file will be stored
