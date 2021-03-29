@@ -286,4 +286,5 @@ Thus we could try and mimic this format and simply replace the CSV files with tx
 However, this way is much more repetitive and cluttered than the previously shown format.
 It would get even more cluttered if each columnFile had several corresponding text files.
 
-
+## Where the metadata file will be stored
+The metadata file will be stored in the CTF directory and will have share the directory's name but will have -metadata.json appended to it. For instance, a CTF directory named `vgsales` would contain a metadata file named `vgsales-metadata.json`.
