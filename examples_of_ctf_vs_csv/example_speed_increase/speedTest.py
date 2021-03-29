@@ -45,9 +45,7 @@ for i in range(1, row_len):
     end = time.time()
     csv_times.append(end-start)
 
-print(ctf_times)
-print(csv_times)
-
+# Plot the times figure
 fig = plt.figure()
 plt.title("Time to access " + str(total_lines) + " rows of data")
 plt.xlabel("Columns accessed")
