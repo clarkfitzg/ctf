@@ -55,6 +55,42 @@ class Reader:
             file_size = os.path.getsize(csv_file)
             print(f'{csv_file}\t{file_size}\t{time:.2f}')
 
+
+    def stream_convert_csv_to_ctf(self, stream, path, name):
+        r = csv.reader(iter(stream.readline, ''))
+
+        firstRow = next(r)
+
+        total_columns = len(firstRow)
+
+        #makes the directory with user specified name and location
+
+        path = os.path.join(path, name)
+
+        os.mkdir(path)
+
+        os.chdir(path)
+
+        ctf_files = [] #array that will be used for looping through with zip
+
+
+        #open a new file for each column and then append that to the ctf_files array
+        for i in range(0,total_columns):
+            outF = open(f'column{i+1}.txt', "w")
+            ctf_files.append(f'column{i+1}.txt')
+
+        
+        #write the first row 
+        for value, ctf_file in zip(firstRow, ctf_files):
+            with open(ctf_file, "a") as f:
+                    f.write(value + "\n")
+        #write all the remaining 
+        for row in r:
+            for value, ctf_file in zip(row, ctf_files):
+                with open(ctf_file, "a") as f:
+                    f.write(value + "\n")
+
+
     def convert_csv_to_ctf(self, csv_file):
         '''Conversion function for each .csv file'''
         total_columns = 0
