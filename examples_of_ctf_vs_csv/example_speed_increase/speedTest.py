@@ -88,7 +88,10 @@ def print_lines(dict_of_lines):
     plt.xlabel("Columns accessed")
     plt.ylabel("Average time for " + str(attempts) + " attempts")
     for key in dict_of_lines:
-        plt.plot(dict_of_lines[key], label=key)
+        # Sets the x values to be 1 based rather than 0 based
+        xticks = list(range(1,len(dict_of_lines[key])+1))
+        plt.xticks(xticks)
+        plt.plot(xticks,dict_of_lines[key], label=key)
     plt.legend()
     fig.savefig('csv_ctf_access_times.png')
 
