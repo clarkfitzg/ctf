@@ -5,52 +5,127 @@ import csv
 
 from column_text_format import reader
 
-def read_through_column(col):
-    for item in col:
+def try_conversion(x):
+    try:
+        x = int(x)
+    except:
         pass
+    return x
 
-with open('vgsales.csv') as f:
-    total_lines = sum(1 for line in f)
+ctf_file = 'vgsales'
+csv_file = 'vgsales.csv'
+attempts = 30
+ctf_function = lambda x : x
+csv_function = try_conversion
 
-# get ctf access times
-ctf_times = []
 
-open_start = time.time()
-vgsales = reader.Reader("vgsales")
-vgsales.read_metadata()
-open_end = time.time()
-open_time = open_end - open_start
-for i in range(1, len(vgsales.columns)):
-    start = time.time()
-    for col in vgsales.columns[0:i]:
-        read_through_column(vgsales[col])
-    end = time.time()
-    ctf_times.append(end-start + open_time)
+def test_columns_ctf(ctf_file, function = lambda x : x):
+    '''
+    This will run on a given ctf file and return an array of n values each corresponding to the time needed to access n columns. It will run function on each item in each column/row.
+    '''
 
-# get csv times
-row_len = 0
-csv_times = []
-with open('vgsales.csv') as csv_file:
-    reader = csv.reader(csv_file)
-    x = iter(reader)
-    row_len = len(next(x))
+    # get ctf access times
+    ctf_times = []
 
-for i in range(1, row_len):
-    start = time.time()
-    with open('vgsales.csv') as csv_file:
+    open_start = time.time()
+    vgsales = reader.Reader(ctf_file)
+    vgsales.read_metadata()
+    open_end = time.time()
+    open_time = open_end - open_start
+    for i in range(0, len(vgsales.columns) + 1):
+        start = time.time()
+        for col in vgsales.columns[0:i]:
+            for item in vgsales[col]:
+                function(item)
+        end = time.time()
+        ctf_times.append(end-start + open_time)
+    return ctf_times
+
+
+def test_columns_csv(csv_file, function = lambda x : x):
+    '''
+    This will run on a given csv file and return an array of n values each corresponding to the time needed to access n columns. It will run function on each item in each column/row.
+    '''
+    # get csv times
+    row_len = 0
+    csv_times = []
+    with open(csv_file) as csv_file:
         reader = csv.reader(csv_file)
-        for row in reader:
-            x = row[0:i]
-            pass
-    end = time.time()
-    csv_times.append(end-start)
+        x = iter(reader)
+        row_len = len(next(x))
 
-# Plot the times figure
-fig = plt.figure()
-plt.title("Time to access " + str(total_lines) + " rows of data")
-plt.xlabel("Columns accessed")
-plt.ylabel("Time")
-plt.plot(ctf_times, label='ctf times')
-plt.plot(csv_times, label='csv times')
-plt.legend()
-fig.savefig('csv_ctf_access_times.png')
+    # Runs increasingly to test columns
+    for columns_to_test in range(0, row_len+1):
+        start = time.time()
+        with open('vgsales.csv') as csv_file:
+            reader = csv.reader(csv_file)
+            # Runs on each row from the file
+            for row in reader:
+                # Loops through n times to test each row item and execute function on them
+                for index in range(0,columns_to_test):
+                    row_item = row[index]
+                    # Logic for converting first row to int
+                    if (index==0):
+                        function(row_item)
+                    else:
+                        pass
+        end = time.time()
+        csv_times.append(end-start)
+    return csv_times
+
+def print_lines(dict_of_lines):
+    '''
+    Accepts a dict of lines and graphs them using key as the label and value as the array of time values
+    '''
+    # Get the total number of rows for the header
+    with open(csv_file) as f:
+        total_rows = sum(1 for line in f)
+
+    # Plot the times figure
+    fig = plt.figure()
+    # Setup labels
+    plt.title(str(total_rows) + " rows of data accessed")
+    plt.xlabel("Columns accessed")
+    plt.ylabel("Average time for " + str(attempts) + " attempts")
+    for key in dict_of_lines:
+        # Sets the x values to be 1 based rather than 0 based
+        xticks = list(range(1,len(dict_of_lines[key])+1))
+        plt.xticks(xticks)
+        plt.plot(xticks,dict_of_lines[key], label=key)
+    plt.legend()
+    fig.savefig('csv_ctf_access_times.png')
+
+def average_attempts_array(attempts_array):
+    '''
+    Takes a two dimensional array of attempts and returns a one dimensional array with the averages
+    '''
+    average_array = []
+    length_of_attempt = len(attempts_array[0])
+    for index in range(0, length_of_attempt -1 ):
+        average = 0
+        for attempt in attempts_array:
+            average += attempt[index]
+        average_array.append(average / length_of_attempt)
+    return average_array
+
+def get_average_times():
+    '''
+    Runs n attemps and returns a dictionary containing the averages for ctf and csv
+    '''
+    ctf_attempts = []
+    for attempt in range(0, attempts):
+        ctf_attempts.append(test_columns_ctf(ctf_file, ctf_function))
+
+    csv_attempts = []
+    for attempt in range(0, attempts):
+        csv_attempts.append(test_columns_csv(csv_file, csv_function))
+
+    times_dict = {
+        'ctf': average_attempts_array(ctf_attempts),
+        'csv': average_attempts_array(csv_attempts),
+    }
+    return times_dict
+
+# Runs the logic
+print_lines(get_average_times())
+
