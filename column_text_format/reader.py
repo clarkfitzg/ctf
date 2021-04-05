@@ -3,7 +3,7 @@ import os
 import time
 import glob
 import json
-from column_text_format.column import Column
+from .column import Column
 
 class Reader:
     '''
