@@ -1,13 +1,13 @@
 ## Setup 
 Make sure you install all the dependencies before you begin with the build/release process. Build is used to generate the required files, and twine is used to upload those files to PyPi.
 ```python
-python3 -m pip install --upgrade build
+python3 -m pip install --user --upgrade build
 python3 -m pip install --user --upgrade twine
 ```
 Then make sure you are in the base directory for this repo.
 
 ## Build
-Building the program will create two files under dist/ "the tar.gz file is a Source Archive whereas the .whl file is a Built Distribution." [Source](https://packaging.python.org/tutorials/packaging-projects/)
+Building the program will create two files under dist/ "the tar.gz file is a Source Archive whereas the .whl file is a Built Distribution" [Source].(https://packaging.python.org/tutorials/packaging-projects/) In the repository root directory run:
 ```bash
 python3 -m build
 ```
@@ -24,7 +24,7 @@ When you are installing locally there is no need to change this version, however
 ## Install Locally
 To install this wheel locally for testing all you need to do is install the wheel through pip.
 ```bash
-pip3 install dist/[wheel_file_name].whl --upgrade
+pip3 install dist/[wheel_file_name].whl --user --upgrade
 ```
 Now when you run ```import ctf``` this will be your latest version.
 
