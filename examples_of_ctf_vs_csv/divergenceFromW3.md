@@ -292,4 +292,18 @@ if the columnFile Platform was so large that it had two text files, "Platform_1.
 associated with it, then there would be nearly identical tableSchemas  for two different urls.
 
 ## Where the metadata file will be stored
-The metadata file will be stored in the CTF directory and will have share the directory's name but will have -metadata.json appended to it. For instance, a CTF directory named `vgsales` would contain a metadata file named `vgsales-metadata.json`.
+The metadata file will be stored in the CTF directory and will have share the directory's name but will have -metadata.json appended to it. For instance, a CTF directory named `vgsales` would contain a metadata file named `vgsales-metadata.json.
+
+## JSON-LD contexts
+Sources [A JSON-based Serialization for Linked Data](https://www.w3.org/TR/json-ld11/#introduction) and (https://www.w3.org/TR/tabular-data-primer/)
+### What exactly is a context?
+* When two people communicate with one another, the conversation takes place in a shared environment, typically called "the context of the conversation". This shared context allows the individuals to use shortcut terms, like the first name of a mutual friend, to communicate more quickly but without losing accuracy. A context in JSON-LD works in the same way. It allows two applications to use shortcut terms to communicate with one another more efficiently, but without losing accuracy.
+* A context is used to map term, case sensitive short-hand string that cannot be the same as any JSON-LD keyword, to [IRIs](https://tools.ietf.org/html/rfc3987#section-2). 
+* Information in the referenced context allows developers to re-use each other's data without having to agree to how their data will interoperate on a site-by-site basis. 
+* Metadata files must always include the @context property with a value "http://www.w3.org/ns/csvw": this enables implementations to tell that these are CSV metadata files. The url property points to the CSV file that the metadata file describes.
+
+### How will differ from the CSVW context 
+First note that we will try to extend as much from CSVW as we can.
+* We will not have `columns` since these are used to specify the particular columns that a CSV file has and instead we will have an anologous idea called `columnFiles` which has already been explained.
+* We will not use `url` to link to a CSV file and instead we will use `url` to link to a text file or an array of text files that correspond to one specific columnFile. 
+* We will create a new property definition called `dir` which will serve as the structure for CTF file.   
