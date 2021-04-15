@@ -16,7 +16,7 @@ import column_text_format.writer as writer
 ```python
 import column_text_format.converter as converter
 ```
-
+TODO: Compare contrast to CSV
 
 ## Reading
 For reading we have three ways to access columns.
@@ -77,3 +77,4 @@ writer_obj = ctf.writer(dir_name)
 types = writer_obj.types
 > [str, int, str, float, bool]
 ```
+TODO: Make to_ctf() a function below the main package.

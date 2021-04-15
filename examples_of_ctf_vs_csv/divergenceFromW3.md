@@ -302,7 +302,7 @@ Sources [A JSON-based Serialization for Linked Data](https://www.w3.org/TR/json-
 * Information in the referenced context allows developers to re-use each other's data without having to agree to how their data will interoperate on a site-by-site basis. 
 * Metadata files must always include the @context property with a value "http://www.w3.org/ns/csvw": this enables implementations to tell that these are CSV metadata files. The url property points to the CSV file that the metadata file describes.
 
-### How will differ from the CSVW context 
+### How will differ from the CSVW context
 First note that we will try to extend as much from CSVW as we can.
 * We will not have `columns` since these are used to specify the particular columns that a CSV file has and instead we will have an anologous idea called `columnFiles` which has already been explained.
 * We will not use `url` to link to a CSV file and instead we will use `url` to link to a text file or an array of text files that correspond to one specific columnFile. 
