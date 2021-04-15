@@ -1,0 +1,13 @@
+{
+	"@context": "http://www.w3.org/ns/csvw",
+	"dir": "GDELT",
+	"tableSchema":{
+		"columnFiles":[{
+			"url":"column1.txt",
+			"datatype": {
+				"base": "integer"
+			}
+		}]
+	}
+}
+
