@@ -158,7 +158,7 @@ def stream_convert_csv_to_ctf(stream, path, name, **kwargs):
     #open a new file for each column and then append that to the ctf_files array
     for i in range(0,total_columns):
         outF = open(f'column{i+1}.txt', "w")
-        ctf_files.append(f'column{i+1}.txt')
+        ctf_files.append(outF)
 
     # TODO (1st): 
     # Create a list of open files, one for each column.
