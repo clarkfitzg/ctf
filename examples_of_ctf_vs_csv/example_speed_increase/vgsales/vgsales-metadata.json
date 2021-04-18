@@ -6,10 +6,7 @@
 			"url": "Rank.txt",
 			"titles": "Rank",
 			"description": "The rank of different video games based on their global sales.",
-			"datatype": {
-				"base": "integer",
-				"minimum": "1"
-			}
+			"datatype": "integer"
 		}, {
 			"url": "Name.txt",
 			"titles": "Name",
