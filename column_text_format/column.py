@@ -1,5 +1,5 @@
 import os
-
+from .metadata_conversion_funcs import metadata_types
 
 class Column:
     '''
@@ -8,13 +8,15 @@ class Column:
 
     Attributes:
         file_name(str): The full path to the colum file
-        data_type(type): The type of data in the column as specified in metadata.json
+        datatype(dict): The type of data in the column as specified in metadata.json
         column_file(_io.TextIOWrapper): Refers to the opened file
     '''
 
-
-    def __init__(self, file_name, data_type = str):
+    def __init__(self, file_name, datatype = None):
         '''Sets up the column name that will be accessed'''
+        self.datatype = ""
+        self.file_name = ""
+
         file_name_only, extension = os.path.splitext(file_name)
         if (extension == ''):
             self.file_name = file_name + ".txt"
@@ -22,7 +24,7 @@ class Column:
             self.file_name = file_name
         if (not os.path.exists(self.file_name)):
             raise FileNotFoundError(f'{self.file_name} does not exist')
-        self.data_type = data_type
+        self.datatype = datatype
 
     def __iter__(self):
         '''Sets up the object for iteration'''
@@ -37,9 +39,7 @@ class Column:
             self.column_file.close()
             raise StopIteration()
 
-        if not type(row) is self.data_type:
-            row = self.convert_data_type(row)
-        return row
+        return self.parse_data(row)
 
     def __len__(self):
         '''Returns the length of the column without loading the data into memory'''
@@ -57,6 +57,16 @@ class Column:
         '''closes self.column_file'''
         #self.column_file.close()
 
-    def convert_data_type(self, value):
-        '''Converts value to the data_type found in metadata.json'''
-        return self.data_type(value)
+    def parse_data(self, value):
+        if (self.datatype == None):
+            return value
+        else:
+            try:
+                conversion_func = metadata_types[self.datatype]
+            except KeyError as err:
+                raise NotImplementedError(self.datatype+" is not currently a valid datatype") from None
+            return conversion_func(value)
+
+    # def convert_data_type(self, value):
+    #     '''Converts value to the data_type found in metadata.json'''
+    #     return self.data_type(value)

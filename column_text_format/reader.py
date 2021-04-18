@@ -13,19 +13,20 @@ class Reader:
     def __init__(self, file_name):
         self.file_name = file_name
         self.columns = []
+        self.data_types = {}
+
         for each_file in os.listdir(file_name):
             if(each_file[-4:] == '.txt'):
                 self.columns.append(each_file[:-4])
+        self.read_metadata()
 
     def __getitem__(self, column_key):
         '''Treats data like a dictionary, retuns iter when called as ctf_file['column']'''
         full_path = os.path.join(self.file_name, column_key)
         try:
-            data_type = self.data_types[column_key]["base"]
-            if(data_type == 'integer'):
-                data_type = int
-            return Column(full_path, data_type=data_type)
+            return Column(full_path, self.data_types[column_key])
         except:
+            print("err") #!
             return Column(full_path)
 
     def __iter__(self):
@@ -117,10 +118,7 @@ class Reader:
         return return_list
 
     def read_metadata(self, metadata_file = None):
-        '''When run this stores the metadata types for each column in
-        self.data_types as a dictionary of keys with the column name and the value as the dataType
-        from metadata.
-        '''
+        '''When run this stores the metadata types for each column in self.data_types as a dictionary of keys with the column name and the value as the dataType from metadata.'''
         self.data_types = {}
 
         if(metadata_file == None):
