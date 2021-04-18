@@ -1,6 +1,7 @@
 #import xlrd
 import json
 import csv 
+import copy
 
 with open("template_ctf.json") as file:
     json_data = json.load(file)
@@ -31,9 +32,11 @@ for i in range(0,61):
     new_column = default_column
     new_column["url"] = "column" + str(i+1) + ".txt"
     new_column["datatype"]["base"] = arr[i] #sh.cell_value(2, i)
-    #print(new_column)
-    json_data["tableSchema"]["columnFiles"].append(new_column.copy())
+    json_data["tableSchema"]["columnFiles"].append(copy.deepcopy(new_column))
     #json_data["tableSchema"]["column" + str(i+1) + ".txt"] = arr[i]
+
+#print(json_data["tableSchema"]["columnFiles"])
+
 
 json_data["tableSchema"]["columnFiles"].pop(0) 
 

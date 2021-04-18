@@ -6,31 +6,31 @@
             {
                 "url": "column1.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
                 "url": "column2.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
                 "url": "column3.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
                 "url": "column4.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
                 "url": "column5.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "float"
                 }
             },
             {
@@ -156,7 +156,7 @@
             {
                 "url": "column26.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
@@ -180,43 +180,43 @@
             {
                 "url": "column30.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
                 "url": "column31.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "float"
                 }
             },
             {
                 "url": "column32.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
                 "url": "column33.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
                 "url": "column34.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
                 "url": "column35.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "float"
                 }
             },
             {
                 "url": "column36.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
@@ -246,13 +246,13 @@
             {
                 "url": "column41.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "float"
                 }
             },
             {
                 "url": "column42.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "float"
                 }
             },
             {
@@ -264,7 +264,7 @@
             {
                 "url": "column44.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
@@ -294,13 +294,13 @@
             {
                 "url": "column49.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "float"
                 }
             },
             {
                 "url": "column50.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "float"
                 }
             },
             {
@@ -312,7 +312,7 @@
             {
                 "url": "column52.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
@@ -342,13 +342,13 @@
             {
                 "url": "column57.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "float"
                 }
             },
             {
                 "url": "column58.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "float"
                 }
             },
             {
@@ -360,7 +360,7 @@
             {
                 "url": "column60.txt",
                 "datatype": {
-                    "base": "string"
+                    "base": "integer"
                 }
             },
             {
