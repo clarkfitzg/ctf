@@ -1,0 +1,374 @@
+{
+    "@context": "http://www.w3.org/ns/csvw",
+    "dir": "GDELT",
+    "tableSchema": {
+        "columnFiles": [
+            {
+                "url": "column1.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column2.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column3.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column4.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column5.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column6.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column7.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column8.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column9.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column10.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column11.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column12.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column13.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column14.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column15.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column16.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column17.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column18.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column19.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column20.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column21.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column22.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column23.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column24.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column25.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column26.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column27.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column28.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column29.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column30.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column31.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column32.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column33.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column34.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column35.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column36.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column37.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column38.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column39.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column40.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column41.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column42.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column43.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column44.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column45.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column46.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column47.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column48.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column49.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column50.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column51.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column52.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column53.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column54.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column55.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column56.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column57.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column58.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column59.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column60.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            },
+            {
+                "url": "column61.txt",
+                "datatype": {
+                    "base": "string"
+                }
+            }
+        ]
+    }
+}
