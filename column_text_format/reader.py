@@ -4,37 +4,37 @@ import time
 import glob
 import json
 from .column import Column
+from .file_management import list_files, open_iterator, full_file
 
 class Reader:
     '''
     This class will be used to convert to and from Ctf files
     '''
 
-    def __init__(self, file_name):
+    def __init__(self, file_name, bucket_name=None):
         self.file_name = file_name
         self.columns = []
+        self.column_files = list_files(file_name, bucket_name)
         self.data_types = {}
+        self.bucket_name = bucket_name
 
-        for each_file in os.listdir(file_name):
-            if(each_file[-4:] == '.txt'):
-                self.columns.append(each_file[:-4])
         self.read_metadata()
+        for column_file in self.column_files:
+            self.columns.append(iter(Column(column_file, bucket_name=self.bucket_name)))
 
     def __getitem__(self, column_key):
         '''Treats data like a dictionary, retuns iter when called as ctf_file['column']'''
-        full_path = os.path.join(self.file_name, column_key)
+        full_path = os.path.join(self.file_name, column_key + '.txt')
         try:
-            return Column(full_path, self.data_types[column_key])
+            return Column(full_path, self.data_types[column_key], bucket_name=self.bucket_name)
         except:
-            print("err") #!
-            return Column(full_path)
+            print("data type failed to pass") #!
+            return Column(full_path, bucket_name=self.bucket_name)
 
     def __iter__(self):
         '''Will return an iterable of all columns'''
-        self.columns = []
-        subpath = os.path.join(self.file_name, '*')
-        for column_file in glob.glob(subpath):
-            self.columns.append(iter(Column(column_file)))
+        for column_file in self.column_files:
+            self.columns.append(iter(Column(column_file, bucket_name=self.bucket_name)))
         return self
 
     def __next__(self):
@@ -123,8 +123,8 @@ class Reader:
 
         if(metadata_file == None):
             metadata_file = self.file_name + "/" + self.file_name + "-metadata.json"
-        with open(metadata_file) as file:
-            json_data = json.load(file)
+        json_string = full_file(metadata_file, self.bucket_name)
+        json_data = json.loads(json_string)
         for column_file in json_data["tableSchema"]["columnFiles"]:
             column_name = column_file["titles"]
             try:

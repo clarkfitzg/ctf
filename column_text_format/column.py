@@ -1,5 +1,7 @@
 import os
+import boto3
 from .metadata_conversion_funcs import metadata_types
+from .file_management import open_iterator
 
 class Column:
     '''
@@ -12,50 +14,66 @@ class Column:
         column_file(_io.TextIOWrapper): Refers to the opened file
     '''
 
-    def __init__(self, file_name, datatype = None):
+    def __init__(self, file_name, datatype = None, bucket_name=None):
         '''Sets up the column name that will be accessed'''
-        self.datatype = ""
-        self.file_name = ""
+        self.datatype = datatype
+        self.file_name = file_name
+        self.bucket_name = bucket_name
+        self.index_name = os.path.splitext(os.path.split(file_name)[1])[0]
 
-        file_name_only, extension = os.path.splitext(file_name)
-        if (extension == ''):
-            self.file_name = file_name + ".txt"
-        else:
-            self.file_name = file_name
-        if (not os.path.exists(self.file_name)):
-            raise FileNotFoundError(f'{self.file_name} does not exist')
+        # file_name_only, extension = os.path.splitext(file_name)
+        # if (extension == ''):
+        #     self.file_name = file_name + ".txt"
+        # else:
+        #     self.file_name = file_name
+        # if (not os.path.exists(self.file_name)):
+        #     raise FileNotFoundError(f'{self.file_name} does not exist')
         self.datatype = datatype
 
     def __iter__(self):
         '''Sets up the object for iteration'''
-        self.column_file = open(self.file_name)
+        self.iterator = open_iterator(self.file_name, bucket_name=self.bucket_name)
         return self
 
     def __next__(self):
         '''Returns the next item in the column converted to the proper data type'''
         try:
-            row = next(self.column_file)[:-1]
+            if (self.bucket_name == None):
+                row = next(self.iterator)[:-1]
+            else:
+                row = next(self.iterator).decode('utf8')[:-1]
         except StopIteration:
-            self.column_file.close()
+            self.iterator.close()
             raise StopIteration()
 
         return self.parse_data(row)
 
     def __len__(self):
         '''Returns the length of the column without loading the data into memory'''
-        with open(self.file_name) as opened_file:
-            for index, value in enumerate(opened_file):
-                pass
-        self.length = index
+        opened_file = open_iterator(self.file_name, bucket_name=self.bucket_name)
+        counter = 0
+        for value in opened_file:
+            counter+=1
+        self.length = counter
+        opened_file.close()
         return self.length
 
     def __del__(self):
         '''Runs when self is destroyed, it closes the open file'''
-        self.close()
+        pass
+        # self.iterator.close()
 
-    def close(self):
-        '''closes self.column_file'''
-        #self.column_file.close()
+    # def open_iterator(self, file_name):
+    #     '''Returns an iterator either from the file object or from the s3 object
+    #     Both have tne \n at the end, which must be handled elsewhere in this class'''
+    #     if (not self.bucket_name):
+    #         self.iterator = open(file_name)
+    #     else:
+    #         session = boto3.Session().resource('s3')
+    #         s3_obj = session.Object(self.bucket_name, self.key)
+    #         body = s3_obj.get()['Body']
+    #         self.iterator = body.iter_lines(chunk_size=1024, keepends=True)
+    #     return self.iterator
 
     def parse_data(self, value):
         if (self.datatype == None):
@@ -67,6 +85,3 @@ class Column:
                 raise NotImplementedError(self.datatype+" is not currently a valid datatype") from None
             return conversion_func(value)
 
-    # def convert_data_type(self, value):
-    #     '''Converts value to the data_type found in metadata.json'''
-    #     return self.data_type(value)

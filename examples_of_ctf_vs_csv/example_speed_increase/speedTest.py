@@ -28,14 +28,14 @@ def test_columns_ctf(ctf_file, function = lambda x : x):
     ctf_times = []
 
     open_start = time.time()
-    vgsales = reader.Reader(ctf_file)
-    vgsales.read_metadata()
+    vgsales = reader(ctf_file)
     open_end = time.time()
     open_time = open_end - open_start
-    for i in range(0, len(vgsales.columns) + 1):
+    for i in range(0, len(vgsales.column_files) + 1):
         start = time.time()
         for col in vgsales.columns[0:i]:
-            for item in vgsales[col]:
+            col_name = col.index_name
+            for item in vgsales[col_name]:
                 function(item)
         end = time.time()
         ctf_times.append(end-start + open_time)
