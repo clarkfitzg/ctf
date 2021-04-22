@@ -15,6 +15,8 @@ def try_conversion(x):
 ctf_file = '/home/ec2-user/GDELT'
 csv_file = '/mnt/extra/2018.csv'
 attempts = 1
+# ctf_file = 'gdelt'
+# csv_file = 'gdelt.csv'
 ctf_function = lambda x : x
 csv_function = try_conversion
 
@@ -31,7 +33,7 @@ def test_columns_ctf(ctf_file, function = lambda x : x):
     vgsales = reader(ctf_file)
     open_end = time.time()
     open_time = open_end - open_start
-    for i in range(0, len(vgsales.column_files) + 1):
+    for i in range(0, len(vgsales.columns) + 1):
         start = time.time()
         for col in vgsales.columns[0:i]:
             col_name = col.index_name
