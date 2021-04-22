@@ -13,9 +13,9 @@ class Reader:
 
     def __init__(self, file_path, bucket_name=None):
         self.file_path = file_path
-        self.file_name = os.path.basename(self.file_path)
+        self.file = os.path.basename(file_path)
         self.columns = []
-        self.column_files = list_files(file_name, bucket_name)
+        self.column_files = list_files(file_path, bucket_name)
         self.data_types = {}
         self.bucket_name = bucket_name
 
@@ -25,7 +25,7 @@ class Reader:
 
     def __getitem__(self, column_key):
         '''Treats data like a dictionary, retuns iter when called as ctf_file['column']'''
-        full_path = os.path.join(self.file_name, column_key + '.txt')
+        full_path = os.path.join(self.file_path, column_key + '.txt')
         try:
             return Column(full_path, self.data_types[column_key], bucket_name=self.bucket_name)
         except:
@@ -123,7 +123,7 @@ class Reader:
         self.data_types = {}
 
         if(metadata_file == None):
-            metadata_file = self.file_path + "/" + self.file_name + "-metadata.json"
+            metadata_file = self.file_path + "/" + self.file + "-metadata.json"
         json_string = full_file(metadata_file, self.bucket_name)
         json_data = json.loads(json_string)
         for column_file in json_data["tableSchema"]["columnFiles"]:
