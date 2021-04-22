@@ -31,7 +31,7 @@ def test_columns_ctf(ctf_file, function = lambda x : x):
     vgsales = reader(ctf_file)
     open_end = time.time()
     open_time = open_end - open_start
-    for i in range(0, len(vgsales.column_files) + 1):
+    for i in range(0, len(vgsales.columns) + 1):
         start = time.time()
         for col in vgsales.columns[0:i]:
             col_name = col.index_name
