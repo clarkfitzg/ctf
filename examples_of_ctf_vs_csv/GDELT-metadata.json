@@ -5,369 +5,247 @@
         "columnFiles": [
             {
                 "url": "column1.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column2.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column3.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column4.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column5.txt",
-                "datatype": {
-                    "base": "float"
-                }
+                "datatype": "float"
             },
             {
                 "url": "column6.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column7.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column8.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column9.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column10.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column11.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column12.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column13.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column14.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column15.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column16.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column17.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column18.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column19.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column20.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column21.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column22.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column23.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column24.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column25.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column26.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column27.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column28.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column29.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column30.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column31.txt",
-                "datatype": {
-                    "base": "float"
-                }
+                "datatype": "float"
             },
             {
                 "url": "column32.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column33.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column34.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column35.txt",
-                "datatype": {
-                    "base": "float"
-                }
+                "datatype": "float"
             },
             {
                 "url": "column36.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column37.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column38.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column39.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column40.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column41.txt",
-                "datatype": {
-                    "base": "float"
-                }
+                "datatype": "float"
             },
             {
                 "url": "column42.txt",
-                "datatype": {
-                    "base": "float"
-                }
+                "datatype": "float"
             },
             {
                 "url": "column43.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column44.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column45.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column46.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column47.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column48.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column49.txt",
-                "datatype": {
-                    "base": "float"
-                }
+                "datatype": "float"
             },
             {
                 "url": "column50.txt",
-                "datatype": {
-                    "base": "float"
-                }
+                "datatype": "float"
             },
             {
                 "url": "column51.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column52.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column53.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column54.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column55.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column56.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column57.txt",
-                "datatype": {
-                    "base": "float"
-                }
+                "datatype": "float"
             },
             {
                 "url": "column58.txt",
-                "datatype": {
-                    "base": "float"
-                }
+                "datatype": "float"
             },
             {
                 "url": "column59.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             },
             {
                 "url": "column60.txt",
-                "datatype": {
-                    "base": "integer"
-                }
+                "datatype": "integer"
             },
             {
                 "url": "column61.txt",
-                "datatype": {
-                    "base": "string"
-                }
+                "datatype": "string"
             }
         ]
     }
