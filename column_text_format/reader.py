@@ -126,13 +126,13 @@ class Reader:
         json_string = full_file(metadata_file, self.bucket_name)
         json_data = json.loads(json_string)
         for column_file in json_data["tableSchema"]["columnFiles"]:
-            column_name = column_file["titles"]
+            column_name = os.path.splitext(column_file["url"])[0]
             try:
                 column_type = column_file["datatype"]
                 self.data_types[column_name] = column_type
             except:
                 pass
-            
+
 
 def stream_convert_csv_to_ctf(stream, path, name, **kwargs):
     # TODO (2nd): add reader argument, maybe use kwargs

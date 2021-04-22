@@ -12,8 +12,8 @@ def try_conversion(x):
         pass
     return x
 
-ctf_file = 'vgsales'
-csv_file = 'vgsales.csv'
+ctf_file = 'gdelt'
+csv_file = 'gdelt.csv'
 attempts = 30
 ctf_function = lambda x : x
 csv_function = try_conversion
@@ -39,6 +39,7 @@ def test_columns_ctf(ctf_file, function = lambda x : x):
                 function(item)
         end = time.time()
         ctf_times.append(end-start + open_time)
+        print(str(end-start + open_time) + "\n")
     return ctf_times
 
 
@@ -71,6 +72,7 @@ def test_columns_csv(csv_file, function = lambda x : x):
                         pass
         end = time.time()
         csv_times.append(end-start)
+        print(str(end-start + open_time) + "\n")
     return csv_times
 
 def print_lines(dict_of_lines):

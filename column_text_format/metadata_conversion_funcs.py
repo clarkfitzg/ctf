@@ -1,10 +1,16 @@
 # Based on https://www.w3.org/TR/tabular-data-primer/datatypes.svg
 
 def integer(value):
-    return int(value)
+    try:
+        return int(value)
+    except:
+        return None
 
 def floatConversion(value):
-    return float(value)
+    try:
+        return float(value)
+    except:
+        return None
 
 def stringConversion(value):
     return value
