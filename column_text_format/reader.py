@@ -15,7 +15,7 @@ class Reader:
         self.file_path = file_path
         self.file_name = os.path.basename(self.file_path)
         self.columns = []
-        self.column_files = list_files(file_name, bucket_name)
+        self.column_files = list_files(self.file_path, bucket_name)
         self.data_types = {}
         self.bucket_name = bucket_name
 
