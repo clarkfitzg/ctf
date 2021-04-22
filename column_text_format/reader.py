@@ -123,7 +123,7 @@ class Reader:
         self.data_types = {}
 
         if(metadata_file == None):
-            metadata_file = self.file_name + "/" + self.file_name + "-metadata.json"
+            metadata_file = self.file_path + "/" + self.file_name + "-metadata.json"
         json_string = full_file(metadata_file, self.bucket_name)
         json_data = json.loads(json_string)
         for column_file in json_data["tableSchema"]["columnFiles"]:
