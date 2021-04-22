@@ -14,9 +14,9 @@ def try_conversion(x):
 
 ctf_file = '/home/ec2-user/GDELT'
 csv_file = '/mnt/extra/2018.csv'
+attempts = 1
 # ctf_file = 'gdelt'
 # csv_file = 'gdelt.csv'
-attempts = 30
 ctf_function = lambda x : x
 csv_function = try_conversion
 
