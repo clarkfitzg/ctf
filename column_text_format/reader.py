@@ -25,7 +25,7 @@ class Reader:
 
     def __getitem__(self, column_key):
         '''Treats data like a dictionary, retuns iter when called as ctf_file['column']'''
-        full_path = os.path.join(self.file_name, column_key + '.txt')
+        full_path = os.path.join(self.file_path, column_key + '.txt')
         try:
             return Column(full_path, self.data_types[column_key], bucket_name=self.bucket_name)
         except:
