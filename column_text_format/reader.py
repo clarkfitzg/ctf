@@ -11,8 +11,9 @@ class Reader:
     This class will be used to convert to and from Ctf files
     '''
 
-    def __init__(self, file_name, bucket_name=None):
-        self.file_name = file_name
+    def __init__(self, file_path, bucket_name=None):
+        self.file_path = file_path
+        self.file_name = os.path.basename(self.file_path)
         self.columns = []
         self.column_files = list_files(file_name, bucket_name)
         self.data_types = {}
