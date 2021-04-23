@@ -10,43 +10,53 @@
 		}, {
 			"url": "Name.txt",
 			"titles": "Name",
-			"description": "The name of the video game."
+			"description": "The name of the video game.",
+			"datatype": "string"
             }, {
 			"url": "Platform.txt",
 			"titles": "Platform",
-			"description": "The type of device or console the came is played on."
+			"description": "The type of device or console the came is played on.",
+			"datatype": "string"
 		}, {
 			"url": "Year.txt",
 			"titles": "Year",
-			"description": "The year the game was released."
+			"description": "The year the game was released.",
+			"datatype": "string"
 		}, {
 			"url": "Global_Sales.txt",
 			"titles": "Global_Sales",
-			"description": "The sales of the game in millions of units globally."
+			"description": "The sales of the game in millions of units globally.",
+			"datatype": "string"
 		}, {
 			"url": "Genre.txt",
 			"titles": "Genre",
-			"description": "The genre of the game."
+			"description": "The genre of the game.",
+			"datatype": "string"
 		}, {
 			"url": "Publisher.txt",
 			"titles": "Publisher",
-			"description": "The company that published the game."
+			"description": "The company that published the game.",
+			"datatype": "string"
 		}, {
 			"url": "NA_Sales.txt",
 			"titles": "NA_Sales",
-			"description": "The sales of the game in millions of units in North America."
+			"description": "The sales of the game in millions of units in North America.",
+			"datatype": "string"
 		}, {
 			"url": "NA_Sales.txt",
 			"titles": "EU_Sales",
-			"description": "The sales of the game in millions of units in Europe."
+			"description": "The sales of the game in millions of units in Europe.",
+			"datatype": "string"
 		}, {
 			"url": "JP_Sales.txt",
 			"titles": "JP_Sales",
-			"description": "The sales of the game in millions of units in Japan."
+			"description": "The sales of the game in millions of units in Japan.",
+			"datatype": "string"
 		}, {
 			"url": "Other_Sales.txt",
 			"titles": "Other_Sales",
-			"description": "The sales of the game in millions of units in places outside of Europe, North America, and Japan.."
+			"description": "The sales of the game in millions of units in places outside of Europe, North America, and Japan..",
+			"datatype": "string"
 		}]
 	}
 }
