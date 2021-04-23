@@ -29,7 +29,7 @@ class Reader:
         try:
             return Column(full_path, self.data_types[column_key], bucket_name=self.bucket_name)
         except:
-            print("data type failed to pass") #!
+            print("data type " + repr(self.data_types[column_key]) + " failed to pass") #!
             return Column(full_path, bucket_name=self.bucket_name)
 
     def __iter__(self):
