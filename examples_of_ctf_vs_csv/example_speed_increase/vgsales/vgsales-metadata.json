@@ -43,7 +43,7 @@
 			"description": "The sales of the game in millions of units in North America.",
 			"datatype": "string"
 		}, {
-			"url": "NA_Sales.txt",
+			"url": "EU_Sales.txt",
 			"titles": "EU_Sales",
 			"description": "The sales of the game in millions of units in Europe.",
 			"datatype": "string"
