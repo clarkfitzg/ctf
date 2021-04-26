@@ -67,12 +67,15 @@ def test_columns_csv(csv_file, function = lambda x : x):
             for row in reader:
                 # Loops through n times to test each row item and execute function on them
                 for index in range(0,columns_to_test):
-                    row_item = row[index]
-                    # Logic for converting first row to int
-                    if (index==0):
-                        function(row_item)
-                    else:
-                        pass
+                    try:
+                        row_item = row[index]
+                        # Logic for converting first row to int
+                        if (index==0):
+                            function(row_item)
+                        else:
+                            pass
+                    except:
+                        print(row)
         end = time.time()
         csv_times.append(end-start)
         print(str(end-start) + "\n")
