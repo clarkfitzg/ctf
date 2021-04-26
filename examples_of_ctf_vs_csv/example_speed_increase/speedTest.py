@@ -53,16 +53,16 @@ def test_columns_csv(csv_file, function = lambda x : x):
     # get csv times
     row_len = 0
     csv_times = []
-    with open(csv_file) as csv_file:
-        reader = csv.reader(csv_file, delimiter=delimiter)
+    with open(csv_file) as csv_object:
+        reader = csv.reader(csv_object, delimiter=delimiter)
         x = iter(reader)
         row_len = len(next(x))
 
     # Runs increasingly to test columns
     for columns_to_test in range(1, row_len+1):
         start = time.time()
-        with open(csv_file) as csv_file:
-            reader = csv.reader(csv_file)
+        with open(csv_file) as csv_object:
+            reader = csv.reader(csv_object)
             # Runs on each row from the file
             for row in reader:
                 # Loops through n times to test each row item and execute function on them
