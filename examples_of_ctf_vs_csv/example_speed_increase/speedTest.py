@@ -21,7 +21,7 @@ delimiter=","
 
 attempts = 1
 ctf_function = lambda x : x
-csv_function = try_conversion
+csv_function = lambda x : x #try_conversion
 
 
 def test_columns_ctf(ctf_file, function = lambda x : x):
