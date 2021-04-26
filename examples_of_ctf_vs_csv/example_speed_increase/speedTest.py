@@ -12,12 +12,13 @@ def try_conversion(x):
         pass
     return x
 
-ctf_file = '/home/ec2-user/GDELT'
+# ctf_file = '/home/ec2-user/GDELT'
 csv_file = '/mnt/extra/2018.csv'
+delimiter = "\t"
 attempts = 1
-# ctf_file = 'vgsales'
+ctf_file = 'vgsales'
 # csv_file = 'vgsales.csv'
-ctf_function = lambda x : x
+# ctf_function = lambda x : x
 csv_function = try_conversion
 
 
@@ -53,7 +54,7 @@ def test_columns_csv(csv_file, function = lambda x : x):
     row_len = 0
     csv_times = []
     with open(csv_file) as csv_file:
-        reader = csv.reader(csv_file)
+        reader = csv.reader(csv_file, delimiter=delimiter)
         x = iter(reader)
         row_len = len(next(x))
 
