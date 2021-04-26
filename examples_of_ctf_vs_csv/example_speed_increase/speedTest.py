@@ -18,7 +18,7 @@ delimiter = "\t"
 attempts = 1
 ctf_file = 'vgsales'
 # csv_file = 'vgsales.csv'
-# ctf_function = lambda x : x
+ctf_function = lambda x : x
 csv_function = try_conversion
 
 
@@ -59,7 +59,7 @@ def test_columns_csv(csv_file, function = lambda x : x):
         row_len = len(next(x))
 
     # Runs increasingly to test columns
-    for columns_to_test in range(0, row_len+1):
+    for columns_to_test in range(1, row_len+1):
         start = time.time()
         with open('vgsales.csv') as csv_file:
             reader = csv.reader(csv_file)
