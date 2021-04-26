@@ -12,11 +12,11 @@ def try_conversion(x):
         pass
     return x
 
-# ctf_file = '/home/ec2-user/GDELT'
+ctf_file = '/home/ec2-user/GDELT'
 csv_file = '/mnt/extra/2018.csv'
 delimiter = "\t"
 attempts = 1
-ctf_file = 'vgsales'
+# ctf_file = 'vgsales'
 # csv_file = 'vgsales.csv'
 ctf_function = lambda x : x
 csv_function = try_conversion
@@ -70,10 +70,7 @@ def test_columns_csv(csv_file, function = lambda x : x):
                     try:
                         row_item = row[index]
                         # Logic for converting first row to int
-                        if (index==0):
-                            function(row_item)
-                        else:
-                            pass
+                        function(row_item)
                     except:
                         print(index)
         end = time.time()
