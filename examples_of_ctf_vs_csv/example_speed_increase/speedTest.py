@@ -75,7 +75,6 @@ def test_columns_csv(csv_file, function = lambda x : x):
                         print(index)
         end = time.time()
         csv_times.append(end-start)
-        print(str(end-start) + "\n")
     return csv_times
 
 def print_lines(dict_of_lines):
