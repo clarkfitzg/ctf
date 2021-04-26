@@ -31,14 +31,14 @@ def test_columns_ctf(ctf_file, function = lambda x : x):
     ctf_times = []
 
     open_start = time.time()
-    vgsales = reader(ctf_file)
+    ctf_reader = reader(ctf_file)
     open_end = time.time()
     open_time = open_end - open_start
-    for i in range(0, len(vgsales.columns) + 1):
+    for i in range(0, len(ctf_reader.columns) + 1):
         start = time.time()
-        for col in vgsales.columns[0:i]:
+        for col in ctf_reader.columns[0:i]:
             col_name = col.index_name
-            for item in vgsales[col_name]:
+            for item in ctf_reader[col_name]:
                 function(item)
         end = time.time()
         ctf_times.append(end-start + open_time)
@@ -72,7 +72,7 @@ def test_columns_csv(csv_file, function = lambda x : x):
                         # Logic for converting first row to int
                         function(row_item)
                     except:
-                        print(index)
+                         pass
         end = time.time()
         csv_times.append(end-start)
     return csv_times
