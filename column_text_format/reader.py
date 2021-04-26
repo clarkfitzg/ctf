@@ -19,7 +19,7 @@ class Reader:
         self.data_types = {}
         self.bucket_name = bucket_name
 
-        self.read_metadata()
+        # self.read_metadata()
         for column_file in self.column_files:
             self.columns.append(iter(Column(column_file, bucket_name=self.bucket_name)))
 
