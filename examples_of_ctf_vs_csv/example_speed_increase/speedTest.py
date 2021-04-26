@@ -61,7 +61,7 @@ def test_columns_csv(csv_file, function = lambda x : x):
     # Runs increasingly to test columns
     for columns_to_test in range(1, row_len+1):
         start = time.time()
-        with open('vgsales.csv') as csv_file:
+        with open(csv_file) as csv_file:
             reader = csv.reader(csv_file)
             # Runs on each row from the file
             for row in reader:
