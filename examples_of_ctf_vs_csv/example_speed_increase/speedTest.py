@@ -12,12 +12,14 @@ def try_conversion(x):
         pass
     return x
 
-ctf_file = '/home/ec2-user/GDELT'
-csv_file = '/mnt/extra/2018.csv'
-delimiter = "\t"
+# ctf_file = '/home/ec2-user/GDELT'
+# csv_file = '/mnt/extra/2018.csv'
+# delimiter = "\t"
+ctf_file = 'vgsales'
+csv_file = 'vgsales.csv'
+delimiter=","
+
 attempts = 1
-# ctf_file = 'vgsales'
-# csv_file = 'vgsales.csv'
 ctf_function = lambda x : x
 csv_function = try_conversion
 
