@@ -18,7 +18,7 @@ delimiter = "\t"
 attempts = 1
 ctf_file = 'vgsales'
 # csv_file = 'vgsales.csv'
-# ctf_function = lambda x : x
+ctf_function = lambda x : x
 csv_function = try_conversion
 
 
