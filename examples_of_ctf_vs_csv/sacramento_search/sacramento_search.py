@@ -20,8 +20,23 @@ def get_ctf_time(ctf_file):
     for row in location_column:
         if(re.search(sacramento_regex, row)):
             total+=1
-            print(row)
     end = time.time()
-    print(total)
+    total_time = end-start
+    print("CTF time: " + repr(total_time))
+    print("Occurances of 'sacramento'" + repr(total))
+
+def get_csv_time(ctf_file):
+    total = 0
+    start = time.time()
+    with open(csv_file) as csv_file:
+        reader = csv.reader(csv_file, delimiter=delimiter)
+        for row in reader:
+            if(re.search(sacramento_regex, row[36])):
+                total+=1
+    end = time.time()
+    total_time = end-start
+    print("CSV time: " + repr(total_time))
+    print("Occurances of 'sacramento'" + repr(total))
 
 get_ctf_time(ctf_file)
+get_csv_time(csv_file)
