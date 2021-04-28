@@ -23,7 +23,7 @@ def get_ctf_time(ctf_file):
     end = time.time()
     total_time = end-start
     print("CTF time: " + repr(total_time))
-    print("Occurances of 'sacramento'" + repr(total))
+    print("Occurances of 'sacramento': " + repr(total))
 
 def get_csv_time(csv_file):
     total = 0
@@ -36,7 +36,7 @@ def get_csv_time(csv_file):
     end = time.time()
     total_time = end-start
     print("CSV time: " + repr(total_time))
-    print("Occurances of 'sacramento'" + repr(total))
+    print("Occurances of 'sacramento': " + repr(total))
 
 get_ctf_time(ctf_file)
 get_csv_time(csv_file)
