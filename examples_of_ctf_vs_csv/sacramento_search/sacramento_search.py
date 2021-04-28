@@ -25,7 +25,7 @@ def get_ctf_time(ctf_file):
     print("CTF time: " + repr(total_time))
     print("Occurances of 'sacramento'" + repr(total))
 
-def get_csv_time(ctf_file):
+def get_csv_time(csv_file):
     total = 0
     start = time.time()
     with open(csv_file) as csv_file:
