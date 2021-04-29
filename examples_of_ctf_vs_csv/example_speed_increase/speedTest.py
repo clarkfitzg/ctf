@@ -133,6 +133,10 @@ def get_average_times():
         'ctf': average_attempts_array(ctf_attempts),
         'csv': average_attempts_array(csv_attempts),
     }
+    print("\n\nCTF times:")
+    print(times_dict['ctf'])
+    print("\n\nCSV times:")
+    print(times_dict['csv'])
     return times_dict
 
 # Runs the logic
