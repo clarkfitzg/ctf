@@ -36,8 +36,8 @@ def test_columns_ctf(ctf_file, function = lambda x : x):
     ctf_reader = reader(ctf_file)
     open_end = time.time()
     open_time = open_end - open_start
-    # for i in range(0, len(ctf_reader.columns) + 1):
-    for i in range(0, 2):
+    # for i in range(0, 2):
+    for i in range(0, len(ctf_reader.columns) + 1):
         start = time.time()
         for col in ctf_reader.columns[0:i]:
             col_name = col.index_name
@@ -62,8 +62,8 @@ def test_columns_csv(csv_file, function = lambda x : x):
         row_len = len(next(x))
 
     # Runs increasingly to test columns
-    # for columns_to_test in range(1, row_len+1):
-    for columns_to_test in range(0,2):
+    # for columns_to_test in range(0,2):
+    for columns_to_test in range(1, row_len+1):
         start = time.time()
         with open(csv_file) as csv_object:
             reader = csv.reader(csv_object)
