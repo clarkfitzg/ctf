@@ -142,3 +142,14 @@ def get_average_times():
 # Runs the logic
 #! print_lines(get_average_times())
 test_columns_ctf(ctf_file, ctf_function)
+
+
+##############
+def time_col(n):
+    start = time.time()
+    for col in ctf_reader.columns[0:n]:
+        col_name = col.index_name
+        for item in ctf_reader[col_name]:
+            pass
+    end = time.time()
+    return end-start
