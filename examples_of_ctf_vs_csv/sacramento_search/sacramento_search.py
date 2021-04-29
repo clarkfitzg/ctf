@@ -28,8 +28,8 @@ def get_ctf_time(ctf_file):
 def get_csv_time(csv_file):
     total = 0
     start = time.time()
-    with open(csv_file) as csv_file:
-        reader = csv.reader(csv_file, delimiter=delimiter)
+    with open(csv_file) as f:
+        reader = csv.reader(f, delimiter=delimiter)
         for row in reader:
             if(re.search(sacramento_regex, row[36])):
                 total+=1
