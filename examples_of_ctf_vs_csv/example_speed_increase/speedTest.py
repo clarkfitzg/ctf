@@ -37,7 +37,7 @@ def test_columns_ctf(ctf_file, function = lambda x : x):
     open_end = time.time()
     open_time = open_end - open_start
     # for i in range(0, 2):
-    for i in range(0, len(ctf_reader.columns) + 1):
+    for i in range(len(ctf_reader.columns) + 1,1,-1):
         start = time.time()
         for col in ctf_reader.columns[0:i]:
             col_name = col.index_name
