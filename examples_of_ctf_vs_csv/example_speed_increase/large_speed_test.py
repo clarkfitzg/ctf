@@ -2,12 +2,12 @@ from column_text_format import reader
 import time
 import logging
 
-# ctf_file = '/home/ec2-user/GDELT'
-# csv_file = '/mnt/extra/2018.csv'
-# delimiter = "\t"
-ctf_file = 'vgsales'
-csv_file = 'vgsales.csv'
-delimiter=","
+ctf_file = '/home/ec2-user/GDELT'
+csv_file = '/mnt/extra/2018.csv'
+delimiter = "\t"
+# ctf_file = 'vgsales'
+# csv_file = 'vgsales.csv'
+# delimiter=","
 
 ctf_reader = reader(ctf_file)
 
@@ -27,8 +27,10 @@ try:
     for i in range(1,62):
         time_str = str(time_col(i))
         print(time_str, flush=True)
-        f.write(time_str)
+        f.write(time_str + "\n")
 except:
     logging.error("error")
+    print("end")
 
+print("end")
 logging.error("end")
