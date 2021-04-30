@@ -21,3 +21,5 @@ try:
         print(str(time_col(i)), flush=True)
 except:
     print("ERROR")
+
+print("End")
