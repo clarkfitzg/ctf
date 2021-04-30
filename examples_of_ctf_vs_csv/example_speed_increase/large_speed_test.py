@@ -1,11 +1,14 @@
 from column_text_format import reader
 import time
+import logging
 
 ctf_file = '/home/ec2-user/GDELT'
 csv_file = '/mnt/extra/2018.csv'
 delimiter = "\t"
 
 ctf_reader = reader(ctf_file)
+
+logging.basicConfig(filename='app.log', filemode="a")
 
 def time_col(n):
     start = time.time()
@@ -20,6 +23,6 @@ try:
     for i in range(1,62):
         print(str(time_col(i)), flush=True)
 except:
-    print("ERROR")
+    logging.error("error")
 
-print("End")
+logging.error("end")
