@@ -16,5 +16,8 @@ def time_col(n):
     end = time.time()
     return end-start
 
-for i in range(1,62):
-    print(str(time_col(i)), flush=True)
+try:
+    for i in range(1,62):
+        print(str(time_col(i)), flush=True)
+except:
+    print("ERROR")
