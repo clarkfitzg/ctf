@@ -1,6 +1,8 @@
 from column_text_format import reader
 import time
 import logging
+import csv
+
 
 ctf_file = '/home/ec2-user/GDELT'
 csv_file = '/mnt/extra/2018.csv'
