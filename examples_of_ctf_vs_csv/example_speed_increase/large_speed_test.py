@@ -53,7 +53,7 @@ for columns_to_test in range(1, num_columns):
     with open(csv_file) as csv_object:
         start = time.time()
         print("start")
-        reader = csv.reader(csv_object)
+        reader = csv.reader(csv_object, delimiter=delimiter)
         # Runs on each row from the file
         for row in reader:
             # Loops through n times to test each row item and execute function on them
