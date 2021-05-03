@@ -45,11 +45,14 @@ with open(csv_file) as csv_object:
     x = iter(reader)
     num_columns = len(next(x))
 
+print("began")
+
 # Runs increasingly to test columns
 # for columns_to_test in range(0,2):
-for columns_to_test in range(1, num_columns+1):
+for columns_to_test in range(1, num_columns):
     with open(csv_file) as csv_object:
         start = time.time()
+        print("start")
         reader = csv.reader(csv_object)
         # Runs on each row from the file
         for row in reader:
@@ -63,5 +66,6 @@ for columns_to_test in range(1, num_columns+1):
                 except:
                     pass
         end = time.time()
+        print("time")
         print(str(end-start) + "\n")
 # csv_times.append(end-start)
