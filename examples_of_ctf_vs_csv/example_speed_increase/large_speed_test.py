@@ -11,7 +11,7 @@ delimiter = "\t"
 # csv_file = 'vgsales.csv'
 # delimiter=","
 
-ctf_reader = reader(ctf_file)
+# ctf_reader = reader(ctf_file)
 
 logging.basicConfig(filename='app.log', filemode="a")
 
