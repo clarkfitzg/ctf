@@ -66,6 +66,5 @@ for columns_to_test in range(1, num_columns):
                 except:
                     pass
         end = time.time()
-        print("time")
         print(str(end-start) + "\n")
 # csv_times.append(end-start)
