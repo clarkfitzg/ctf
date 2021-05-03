@@ -48,8 +48,8 @@ with open(csv_file) as csv_object:
 # Runs increasingly to test columns
 # for columns_to_test in range(0,2):
 for columns_to_test in range(1, num_columns+1):
-    start = time.time()
     with open(csv_file) as csv_object:
+        start = time.time()
         reader = csv.reader(csv_object)
         # Runs on each row from the file
         for row in reader:
@@ -62,6 +62,6 @@ for columns_to_test in range(1, num_columns+1):
                     # function(row_item)
                 except:
                     pass
-    end = time.time()
-    csv_times.append(end-start)
-    print(str(end-start) + "\n")
+        end = time.time()
+        print(str(end-start) + "\n")
+# csv_times.append(end-start)
