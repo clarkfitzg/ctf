@@ -49,7 +49,7 @@ print("began", flush=True)
 
 # Runs increasingly to test columns
 # for columns_to_test in range(0,2):
-for columns_to_test in range(1, num_columns):
+for columns_to_test in range(num_columns, num_columns + 1):
     with open(csv_file) as csv_object:
         start = time.time()
         reader = csv.reader(csv_object, delimiter=delimiter)
