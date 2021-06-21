@@ -1,0 +1,23 @@
+Package: ctf
+Type: Package
+Title: read and write column text format (CTF)
+Version: 0.1
+Date: 2021-06-21
+Authors@R: person("Clark", "Fitzgerald", role = c("aut", "cre"),
+                     email = "clarkfitzg@gmail.com",
+                     comment = c(ORCID = "0000-0003-3446-6389"))
+Maintainer: Clark Fitzgerald <clarkfitzg@gmail.com>
+Depends:
+    R (>= 3.1.0)
+Suggests: 
+    roxygen2,
+    knitr,
+    rmarkdown,
+    testthat
+Description:
+    Columnar storage formats allow faster, more efficient access to data, and column text format (CTF) is a simple columnar storage format.
+    Use this lightweight package to read and write CTF from R.
+License: MIT + file LICENSE
+URL: https://github.com/julianofhernandez/ctf
+BugReports: https://github.com/julianofhernandez/ctf
+VignetteBuilder: knitr
