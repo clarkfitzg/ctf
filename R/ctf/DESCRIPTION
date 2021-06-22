@@ -21,3 +21,4 @@ License: MIT + file LICENSE
 URL: https://github.com/julianofhernandez/ctf
 BugReports: https://github.com/julianofhernandez/ctf
 VignetteBuilder: knitr
+RoxygenNote: 7.1.1
