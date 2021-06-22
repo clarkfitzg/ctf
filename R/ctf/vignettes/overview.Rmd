@@ -7,4 +7,42 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-TODO
+```{r setup, include=FALSE, eval=TRUE}
+# For development, before I implement.
+knitr::opts_chunk$set(eval = FALSE, echo = TRUE)
+```
+
+_One or two paragraphs motivating CTF, including use cases_
+
+
+## Quick Start
+
+```{R}
+library(ctf)
+```
+
+The following examples use R's builtin `iris` dataset.
+
+First, let's save `iris` in CTF format inside the directory `iris_ctf_data`.
+
+```{R}
+write.ctf(iris, dir = "iris_ctf_data")
+```
+
+The directory `iris_ctf_data` now contains files corresponding to the columns in `iris`.
+
+```{R}
+list.files("iris_ctf_data")
+
+colnames(iris)
+```
+
+TODO: add test.
+
+We can read the data saved in ctf format back into R as `iris2`, and make sure it's the same as the original `iris` we started with.
+
+```{R}
+iris2 = read.ctf("iris_ctf_data")
+
+all.equal(iris, iris2)
+```
