@@ -1,7 +1,8 @@
 ---
 output: rmarkdown::html_vignette
+title: Overview
 vignette: >
-  %\VignetteIndexEntry{ctf-overview}
+  %\VignetteIndexEntry{Overview}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
