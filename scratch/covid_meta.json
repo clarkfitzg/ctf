@@ -1,0 +1,64 @@
+{
+    "TableMetadata": {
+        "Name": "covid",
+        "CreateTime": "2021-04-27T21:32:53-07:00",
+        "LastAccessTime": "2021-04-27T21:32:53-07:00",
+        "TableType": "EXTERNAL_TABLE",
+        "Columns": [
+            {
+                "Name": "data_source",
+                "Type": "string"
+            },
+            {
+                "Name": "signal",
+                "Type": "string"
+            },
+            {
+                "Name": "geo_type",
+                "Type": "string"
+            },
+            {
+                "Name": "time_value",
+                "Type": "int"
+            },
+            {
+                "Name": "geo_value",
+                "Type": "string"
+            },
+            {
+                "Name": "direction",
+                "Type": "int"
+            },
+            {
+                "Name": "value",
+                "Type": "double"
+            },
+            {
+                "Name": "stderr",
+                "Type": "double"
+            },
+            {
+                "Name": "sample_size",
+                "Type": "double"
+            }
+        ],
+        "PartitionKeys": [],
+        "Parameters": {
+            "CrawlerSchemaDeserializerVersion": "1.0",
+            "CrawlerSchemaSerializerVersion": "1.0",
+            "UPDATED_BY_CRAWLER": "crawler1",
+            "averageRecordSize": "14",
+            "classification": "parquet",
+            "compressionType": "none",
+            "inputformat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+            "location": "s3://stat196k-data-examples/covid_db/covid/",
+            "objectCount": "21",
+            "outputformat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+            "recordCount": "136060398",
+            "serde.param.serialization.format": "1",
+            "serde.serialization.lib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+            "sizeKey": "1102566068",
+            "typeOfData": "file"
+        }
+    }
+}
