@@ -9,6 +9,7 @@ What do we want out of a standard?
 1. Simplicity. That's the premise of CTF.
 2. Support. The more people already use it, the more we can borrow from and integrate with existing technologies.
 3. Big Data Use Case. Our use case is analyzing and processing big data, and not web development. By following a standard that was developed for a use case that's closest to ours, we will probably have an easier time.
+4. Open Source.
 
 
 This blog post, [Metadata Management: Hive Metastore vs AWS Glue
@@ -109,3 +110,23 @@ They store all their metadata in the binary files themselves, and some metadata 
 
 In conclusion, the CTF metadata doesn't need to follow the AWS Glue format exactly, but I think that following Glue where possible will make it easier when we later write the crawler and demonstrate how to use this data format with AWS.
 Maybe that's a lofty goal!
+
+
+## Advantages of CSVW
+
+We already have a working implementation in Python based on CSVW.
+
+CSVW seems carefully and thoughtfully designed for a wide range of use cases, and there are mechanisms to extend it.
+The documentation is extremely thorough and precise.
+In contrast, AWS glue appears to do the minimum that's necessary to support AWS Athena.
+The documentation is sparse, and the actual format could change at any time.
+Not that AWS would do that- it would break a bunch of stuff.
+
+Side note-
+It would be worthwhile to develop software that reads and validates CSV files based on CSVW.
+
+CSVW seems like the right long term solution.
+We can still implement the crawler from CSVW, and generate the Glue metadata.
+It may be more work, but it will also support the use case of reading regular CSV files that are described with CSVW metadata.
+As an academic, I'm not in huge hurry to ship working software.
+I'd rather start with the right technologies in the first place.
