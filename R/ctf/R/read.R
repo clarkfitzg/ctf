@@ -11,6 +11,12 @@
 #' @seealso \code{\link{write.ctf}} to write CTF, and \code{\link[base]{scan}} for the underlying functionality
 #' @export
 #' @examples
-#' vgsales <- 
+#' d <- system.file("inst", "extdata", "vgsales", "vgsales-metadata.json")
+#'
+#' # Read all the columns
+#' vgsales <- read.ctf(d)
+#'
+#' # Read two columns, Name and Rank
+#' vgsales2 <- read.ctf(d, columns = c("Name", "Rank"))
 read.ctf = function(location, columns = NULL, ...) 
     NULL

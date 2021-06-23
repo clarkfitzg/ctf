@@ -322,6 +322,7 @@ Here's another way to structure it:
         "@context": "http://www.w3.org/ns/csvw",
         "url": ".",
         "name": "vgsales",
+        "rowCount": 15000,
         "tableSchema": {
             "columnFiles": [{
 			    "url": "Rank.txt",
@@ -334,3 +335,7 @@ Here's another way to structure it:
 ```
 
 Programming languages won't need a `"name"` for the table, but a database crawler will.
+
+`rowCount` is derived from `headerRowCount` in the official spec.
+It says how many rows are in the data.
+

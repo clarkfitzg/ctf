@@ -1,6 +1,7 @@
 {
 	"@context": "http://www.w3.org/ns/csvw",
 	"url": ".",
+    "rowCount": 100,
 	"tableSchema": {
 		"columns": [{
 			"url": "Rank.txt",
@@ -11,6 +12,11 @@
 			"url": "Name.txt",
 			"titles": "Name",
 			"description": "The name of the video game.",
+			"datatype": "string"
+	    }, {
+			"url": "Genre.txt",
+			"titles": "Genre",
+			"description": "The genre of the video game.",
 			"datatype": "string"
 		}]
 	}
