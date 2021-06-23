@@ -9,6 +9,12 @@
 #' @seealso \code{\link{read.ctf}} to read CTF, \code{\link[base]{cat}} for the underlying functionality, and \code{\link[base]{save}} for writing any R objects.
 #' @export
 #' @examples
-#' d <- tempdir
+#' d <- file.path(tempdir, "iris_ctf_data")
+#' write.ctf(iris, d)
+#' iris2 <- read.ctf("iris_ctf_data")
+#' 
+#' stopifnot(
+#'    all.equal(iris, iris2)
+#' )
 write.ctf = function(x, location, ...)
     NULL

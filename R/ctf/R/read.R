@@ -10,5 +10,7 @@
 #' @return data frame of loaded data
 #' @seealso \code{\link{write.ctf}} to write CTF, and \code{\link[base]{scan}} for the underlying functionality
 #' @export
+#' @examples
+#' vgsales <- 
 read.ctf = function(location, columns = NULL, ...) 
     NULL

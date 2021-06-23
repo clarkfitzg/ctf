@@ -25,8 +25,13 @@ The following examples use R's builtin `iris` dataset.
 
 First, let's save `iris` in CTF format inside the directory `iris_ctf_data`.
 
+```{R, include=FALSE}
+if(dir.exists("iris_ctf_data")) 
+    stop("Directory already exists, so we shouldn't mess with it.")
+```
+
 ```{R}
-write.ctf(iris, dir = "iris_ctf_data")
+write.ctf(iris, "iris_ctf_data")
 ```
 
 The directory `iris_ctf_data` now contains files corresponding to the columns in `iris`.
@@ -46,3 +51,22 @@ iris2 = read.ctf("iris_ctf_data")
 
 all.equal(iris, iris2)
 ```
+
+Clean up:
+
+```{R}
+unlink("iris_ctf_data", recursive = TRUE)
+```
+
+
+## Design Notes
+
+It's not sufficient to return a data frame from `read.ctf`, because that will ignore all the description metadata that existed in the JSON file, for example, the description of the columns.
+We need a way to preserve and represent this metadata in R.
+A hack fix is to return a list with the data frame and the metadata objects.
+
+Ideally, we could pick the functionality of describing data up from an existing package.
+Based on a few Google searchs like this [StackOverflow post](https://stackoverflow.com/questions/11348320/is-there-a-standard-way-to-document-data-frames?noredirect=1&lq=1) it looks like the "Hmisc" package may have this functionality.
+
+It probably makes more sense to create a more focused package for labeled data that's tied to CSVW.
+This is close to the xarray approach.
