@@ -307,3 +307,30 @@ First note that we will try to extend as much from CSVW as we can.
 * We will not have `columns` since these are used to specify the particular columns that a CSV file has and instead we will have an anologous idea called `columnFiles` which has already been explained.
 * We will not use `url` to link to a CSV file and instead we will use `url` to link to a text file or an array of text files that correspond to one specific columnFile. 
 * We will create a new property definition called `dir` which will serve as the structure for CTF file.   
+
+## Clark's comments
+
+`dir` as the directory name could be a URL more generally, and then we can understand the URL for each column to be relative to the top level URL.
+It might make more sense to put the columns in a directory underneath the metadata.
+We could also just say `"url": "."` to denote the local directory where the metadata file lives.
+We also need the metadata to give the name of the table.
+
+Here's another way to structure it:
+
+```JSON
+{
+        "@context": "http://www.w3.org/ns/csvw",
+        "url": ".",
+        "name": "vgsales",
+        "tableSchema": {
+            "columnFiles": [{
+			    "url": "Rank.txt",
+                "titles": "Rank",
+                "description": "The rank of different video games based on their global sales.",
+                "datatype": "integer"
+                }]
+            }
+}
+```
+
+Programming languages won't need a `"name"` for the table, but a database crawler will.

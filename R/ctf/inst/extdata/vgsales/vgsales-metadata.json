@@ -1,0 +1,17 @@
+{
+	"@context": "http://www.w3.org/ns/csvw",
+	"url": ".",
+	"tableSchema": {
+		"columns": [{
+			"url": "Rank.txt",
+			"titles": "Rank",
+			"description": "The rank of different video games based on their global sales.",
+			"datatype": "integer"
+		}, {
+			"url": "Name.txt",
+			"titles": "Name",
+			"description": "The name of the video game.",
+			"datatype": "string"
+		}]
+	}
+}

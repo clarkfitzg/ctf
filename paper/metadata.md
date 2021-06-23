@@ -122,11 +122,12 @@ In contrast, AWS glue appears to do the minimum that's necessary to support AWS 
 The documentation is sparse, and the actual format could change at any time.
 Not that AWS would do that- it would break a bunch of stuff.
 
-Side note-
-It would be worthwhile to develop software that reads and validates CSV files based on CSVW.
-
 CSVW seems like the right long term solution.
 We can still implement the crawler from CSVW, and generate the Glue metadata.
 It may be more work, but it will also support the use case of reading regular CSV files that are described with CSVW metadata.
 As an academic, I'm not in huge hurry to ship working software.
 I'd rather start with the right technologies in the first place.
+
+Side note-
+It would be worthwhile to develop software that reads and validates CSV files based on CSVW.
+CTF could depend on it.
