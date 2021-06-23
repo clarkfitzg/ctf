@@ -19,4 +19,52 @@
 #' # Read two columns, Name and Rank
 #' vgsales2 <- read.ctf(d, columns = c("Name", "Rank"))
 read.ctf = function(location, columns = NULL, ...) 
-    NULL
+{
+    # TODO: Assume for the moment that location is a metadata file.
+    # We'll use TDD and handle directories later
+    metafile = location
+
+    meta = jsonlite::read_json(metafile)
+    colmeta = meta[["tableSchema"]][["columns"]]
+
+    colfiles = sapply(colmeta, `[[`, "url")
+    colfiles = file.path(dirname(metafile), colfiles)
+
+
+    metatypes = sapply(colmeta, `[[`, "datatype")
+    Rtypes = map_types(metatypes, to = "R")
+
+    # TODO: handle missing
+    nmax = meta[["rowCount"]]
+
+    # TODO: Handle columns = NULL
+    columns = Map(scan, file = colfiles, what = Rtypes, nmax = nmax, ...)
+
+    out = do.call(data.frame, columns)
+
+    # TODO: Handle case of multiple titles, but that's far down the road
+    colnames(out) = sapply(colmeta, `[[`, "titles")
+    
+    attr(out, "ctf_metadata") = meta
+
+    out
+}
+
+
+map_types = function(x, to = "R")
+{
+    tm = read.table(header = TRUE, text = "
+meta        R
+integer     integer
+string      character
+")
+
+    if(to == "R"){
+        from = "meta"
+    } else if(to == "meta"){
+        from = "R"
+    }
+
+    locs = match(x, tm[[from]])
+    tm[locs, to]
+}

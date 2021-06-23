@@ -9,13 +9,17 @@ Authors@R: person("Clark", "Fitzgerald", role = c("aut", "cre"),
 Maintainer: Clark Fitzgerald <clarkfitzg@gmail.com>
 Depends:
     R (>= 3.1.0)
+Imports:
+    jsonlite
 Suggests: 
     roxygen2,
     knitr,
     rmarkdown,
     testthat
 Description:
-    Columnar storage formats allow faster, more efficient access to data, and column text format (CTF) is a simple columnar storage format.
+    Columnar storage formats allow faster, more efficient access to data, and column text format (CTF) is a columnar storage format.
+    The goal of CTF is simplicity: each column in a data frame corresponds to a file of plain text, and there's a metadata file.
+    That's it.
     Use this lightweight package to read and write CTF from R.
 License: MIT + file LICENSE
 URL: https://github.com/julianofhernandez/ctf

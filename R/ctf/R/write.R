@@ -11,10 +11,8 @@
 #' @examples
 #' d <- file.path(tempdir, "iris_ctf_data")
 #' write.ctf(iris, d)
-#' iris2 <- read.ctf("iris_ctf_data")
 #' 
-#' stopifnot(
-#'    all.equal(iris, iris2)
-#' )
+#' # Same object as iris, but carries around some extra metadata
+#' iris2 <- read.ctf("iris_ctf_data")
 write.ctf = function(x, location, ...)
     NULL
