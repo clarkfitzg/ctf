@@ -11,7 +11,7 @@
 #' @seealso \code{\link{write.ctf}} to write CTF, and \code{\link[base]{scan}} for the underlying functionality
 #' @export
 #' @examples
-#' d <- system.file("inst", "extdata", "vgsales", "vgsales-metadata.json")
+#' d <- system.file("extdata", "vgsales", "vgsales-metadata.json", package = "ctf")
 #'
 #' # Read all the columns
 #' vgsales <- read.ctf(d)
@@ -37,8 +37,12 @@ read.ctf = function(location, columns = NULL, ...)
     # TODO: handle missing
     nmax = meta[["rowCount"]]
 
+    # We could imagine generalizing the format to allow different characters to separate records rather than just newlines.
+    # For example, multiline text.
+    sep = "\n"
+
     # TODO: Handle columns = NULL
-    columns = Map(scan, file = colfiles, what = Rtypes, nmax = nmax, ...)
+    columns = Map(scan, file = colfiles, what = Rtypes, nmax = nmax, sep = sep, ...)
 
     out = do.call(data.frame, columns)
 
