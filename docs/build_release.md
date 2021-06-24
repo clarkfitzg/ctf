@@ -3,6 +3,12 @@ Make sure you install all the dependencies before you begin with the build/relea
 ```python
 python3 -m pip install --user --upgrade build
 python3 -m pip install --user --upgrade twine
+python3 -m pip install boto3
+```
+You may see this error, it does not interfere with this process
+```
+WARNING: The script twine.exe is installed in 'C:\Users\julianhe\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
 ```
 Then make sure you are in the base directory for this repo.
 
@@ -26,7 +32,7 @@ To install this wheel locally for testing all you need to do is install the whee
 ```bash
 pip3 install dist/[wheel_file_name].whl --user --upgrade
 ```
-Now when you run ```import ctf``` this will be your latest version.
+Now when you run ```import column_text_format``` this will be your latest version.
 
 ## Upload to Test PyPi
 TestPyPi is a test version of PyPi that you can upload and install test packages to and from. Use this package index for getting up to speed before uploading to PyPi.
