@@ -21,17 +21,29 @@
 read.ctf = function(location, columns = NULL, ...) 
 {
     # TODO: Assume for the moment that location is a metadata file.
-    # We'll use TDD and handle directories later
+    # TDD handle directories later
     metafile = location
 
     meta = jsonlite::read_json(metafile)
-    colmeta = meta[["tableSchema"]][["columns"]]
+    colschema = meta[["tableSchema"]][["columns"]]
 
-    colfiles = sapply(colmeta, `[[`, "url")
+    # TODO: Handle case of multiple titles identifying a single column, but that's far down the road.
+    alltitles = sapply(colschema, `[[`, "titles")
+
+    if(is.null(columns)){
+        titles = alltitles
+    } else {
+        titles = columns
+        selected_cols = match(columns, alltitles)
+        # TODO: TDD Check for valid column names
+        colschema = colschema[selected_cols]
+    }
+
+    colfiles = sapply(colschema, `[[`, "url")
     colfiles = file.path(dirname(metafile), colfiles)
 
 
-    metatypes = sapply(colmeta, `[[`, "datatype")
+    metatypes = sapply(colschema, `[[`, "datatype")
     Rtypes = map_types(metatypes, to = "R")
 
     # TODO: handle missing
@@ -41,14 +53,14 @@ read.ctf = function(location, columns = NULL, ...)
     # For example, multiline text.
     sep = "\n"
 
-    # TODO: Handle columns = NULL
     columns = Map(scan, file = colfiles, what = Rtypes, nmax = nmax, sep = sep, ...)
 
     out = do.call(data.frame, columns)
 
-    # TODO: Handle case of multiple titles, but that's far down the road
-    colnames(out) = sapply(colmeta, `[[`, "titles")
+    colnames(out) = titles
     
+    # The metadata contains info on ALL the columns, rather than just the ones selected.
+    # I'm not sure this is ideal.
     attr(out, "ctf_metadata") = meta
 
     out
