@@ -73,6 +73,7 @@ map_types = function(x, to = "R")
 meta        R
 integer     integer
 string      character
+double      double
 ")
 
     if(to == "R"){

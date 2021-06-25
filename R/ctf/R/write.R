@@ -15,4 +15,24 @@
 #' # Same object as iris, but carries around some extra metadata
 #' iris2 <- read.ctf("iris_ctf_data")
 write.ctf = function(x, location, ...)
-    NULL
+{
+
+    meta = list(`@context` = "http://www.w3.org/ns/csvw"
+                , url = "."  # TODO: generalize- "." assumes column files are in the same directory.
+                , rowCount = nrow(x)
+    )
+    # TODO: Allow users to add their own metadata
+
+    col_names = colnames(x)
+    col_file_names = paste0(col_names, ".txt")
+    R_types = sapply(x, typeof)
+
+    meta[["tableSchema"]] = list(columns = Map(list
+        , url = col_file_names
+        , titles = col_names
+        , datatype = map_types(R_types, to = "meta")
+    ))
+
+    jsonlite::write_json(meta, meta_path)
+    Map(cat, x, file = col_file_names, MoreArgs = list(...))
+}
