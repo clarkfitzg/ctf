@@ -48,7 +48,8 @@ read.ctf = function(location, columns = NULL, ...)
 
 
     metatypes = sapply(colschema, `[[`, "datatype")
-    R_scan_what = map_types(metatypes, to = "R")
+    Rtypes = map_types(metatypes, to = "R")
+    R_scan_what lapply(Rtypes, do.call, list())  # What a strange line of code this is!
 
     # TODO: handle missing
     nmax = meta[["rowCount"]]
@@ -57,10 +58,9 @@ read.ctf = function(location, columns = NULL, ...)
     # For example, multiline text.
     sep = "\n"
 
-    columns = Map(scan, file = colfiles, what = Rtypes, nmax = nmax, sep = sep, ...)
+    columns = Map(scan, file = colfiles, what = R_scan_what, nmax = nmax, sep = sep, ...)
 
     out = do.call(data.frame, columns)
-    browser()
 
     colnames(out) = titles
     
@@ -72,22 +72,22 @@ read.ctf = function(location, columns = NULL, ...)
 }
 
 
-type_lookup = function()
+map_types = function(x, to = "R")
 {
-    read.table(header = TRUE, text = "
+    lookup = read.table(header = TRUE, text = "
 meta        R
 boolean     logical
 integer     integer
 double      double
 string      character
 ")
-}
 
+    if(to == "R"){
+        from = "meta"
+    } else if(to == "meta"){
+        from = "R"
+    }
 
-scan_what_args = function(meta_types)
-{
-    lookup = type_lookup()
-    locs = match(meta_types, lookup[["meta"]])
-    funcs = lookup[locs, "R"]
-    lapply(funcs, do.call, list())  # What a strange line of code this is!
+    locs = match(x, lookup[[from]])
+    lookup[locs, to]
 }
