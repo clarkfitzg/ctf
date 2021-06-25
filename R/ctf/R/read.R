@@ -20,9 +20,13 @@
 #' vgsales2 <- read.ctf(d, columns = c("Name", "Rank"))
 read.ctf = function(location, columns = NULL, ...) 
 {
-    # TODO: Assume for the moment that location is a metadata file.
-    # TDD handle directories later
-    metafile = location
+    # TODO: check there's only one metadata file, make sure it exists, etc.
+    if(dir.exists(location)){
+        metafile = list.files(location, pattern = "*.json")
+        metafile = file.path(location, metafile)
+    } else {
+        metafile = location
+    }
 
     meta = jsonlite::read_json(metafile)
     colschema = meta[["tableSchema"]][["columns"]]
@@ -44,7 +48,7 @@ read.ctf = function(location, columns = NULL, ...)
 
 
     metatypes = sapply(colschema, `[[`, "datatype")
-    Rtypes = map_types(metatypes, to = "R")
+    R_scan_what = map_types(metatypes, to = "R")
 
     # TODO: handle missing
     nmax = meta[["rowCount"]]
@@ -56,6 +60,7 @@ read.ctf = function(location, columns = NULL, ...)
     columns = Map(scan, file = colfiles, what = Rtypes, nmax = nmax, sep = sep, ...)
 
     out = do.call(data.frame, columns)
+    browser()
 
     colnames(out) = titles
     
@@ -64,6 +69,26 @@ read.ctf = function(location, columns = NULL, ...)
     attr(out, "ctf_metadata") = meta
 
     out
+}
+
+
+type_lookup = function()
+{
+    tm = read.table(header = TRUE, text = "
+meta        R
+integer     integer
+string      character
+double      double
+")
+
+    if(to == "R"){
+        from = "meta"
+    } else if(to == "meta"){
+        from = "R"
+    }
+
+    locs = match(x, tm[[from]])
+    tm[locs, to]
 }
 
 

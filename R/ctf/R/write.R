@@ -14,12 +14,14 @@
 #' write.ctf(iris, d)
 #' 
 #' # Same object as iris, but carries around some extra metadata
-#' iris2 <- read.ctf("iris_ctf_data")
+#' iris2 <- read.ctf(d)
 write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
 {
+    # This first implementation assumes metadata and data are in the same directory.
+    # This assumption seems like a reasonable best practice for local files, but we'll want to generalize it for objects in cloud storage.
 
     meta = list(`@context` = "http://www.w3.org/ns/csvw"
-                , url = "."  # "." assumes metadata and data are in the same directory, which is reasonable for a first implementation.
+                , url = "."
                 , rowCount = nrow(x)
                 , name = name
     )
@@ -27,7 +29,6 @@ write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
 
     col_names = colnames(x)
     col_file_names = paste0(col_names, ".txt")
-    col_file_names = file.path(datadir, col_file_names)
     R_types = sapply(x, typeof)
 
     meta[["tableSchema"]] = list(columns = Map(list
@@ -36,11 +37,13 @@ write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
         , datatype = map_types(R_types, to = "meta")
     ))
 
-    metafile_path = file.path(datadir, paste0(name, ".json"))
+    metafile_path = file.path(datadir, paste0(name, "-metadata.json"))
 
     # Begin saving
     # TODO: TDD if(dir.exists(datadir) && (notempty)) stop("best practice is to write data in an empty directory. The directory ... contains the files ... Move these files or use a different datadir")
     dir.create(datadir)
     jsonlite::write_json(meta, metafile_path)
-    Map(cat, x, file = col_file_names, MoreArgs = list(...))
+    Map(cat, x, file = file.path(datadir, col_file_names), MoreArgs = list(...))
+
+    invisible(NULL)
 }
