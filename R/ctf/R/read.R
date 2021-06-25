@@ -49,7 +49,8 @@ read.ctf = function(location, columns = NULL, ...)
 
     metatypes = sapply(colschema, `[[`, "datatype")
     Rtypes = map_types(metatypes, to = "R")
-    R_scan_what lapply(Rtypes, do.call, list())  # What a strange line of code this is!
+	# scan() arguments should be double(), character(), etc.
+    R_scan_what = lapply(Rtypes, do.call, list())  # What a strange line of code this is!
 
     # TODO: handle missing
     nmax = meta[["rowCount"]]
@@ -74,6 +75,7 @@ read.ctf = function(location, columns = NULL, ...)
 
 map_types = function(x, to = "R")
 {
+	# These 4 are really all we can do.
     lookup = read.table(header = TRUE, text = "
 meta        R
 boolean     logical

@@ -43,7 +43,8 @@ write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
     # TODO: TDD if(dir.exists(datadir) && (notempty)) stop("best practice is to write data in an empty directory. The directory ... contains the files ... Move these files or use a different datadir")
     dir.create(datadir)
     jsonlite::write_json(meta, metafile_path)
-    Map(cat, x, file = file.path(datadir, col_file_names), MoreArgs = list(...))
+    # TODO: Check if cat() or writeLines() is faster.
+    Map(cat, x, file = file.path(datadir, col_file_names), sep = "\n", MoreArgs = list(...))
 
     invisible(NULL)
 }
