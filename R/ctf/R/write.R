@@ -27,12 +27,14 @@ write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
     )
     # TODO: Allow users to add their own metadata
 
+    # Eventually we'll want to preserve the factor structure in the metadata.
+    x = factor_to_character(x)
+
     col_names = colnames(x)
-    col_file_names = paste0(col_names, ".txt")
     R_types = sapply(x, typeof)
 
     meta[["tableSchema"]] = list(columns = Map(list
-        , url = col_file_names
+        , url = col_names
         , titles = col_names
         , datatype = map_types(R_types, to = "meta")
     ))
@@ -44,7 +46,15 @@ write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
     dir.create(datadir)
     jsonlite::write_json(meta, metafile_path)
     # TODO: Check if cat() or writeLines() is faster.
-    Map(cat, x, file = file.path(datadir, col_file_names), sep = "\n", MoreArgs = list(...))
+    Map(cat, x, file = file.path(datadir, col_names), sep = "\n", MoreArgs = list(...))
 
     invisible(NULL)
+}
+
+
+factor_to_character = function(x)
+{
+    factor_cols = sapply(x, is.factor)
+    x[factor_cols] = lapply(x[factor_cols], as.character)
+    x
 }

@@ -9,7 +9,7 @@ vignette: >
 
 ```{r setup, include=FALSE, eval=TRUE}
 # For development, before I implement.
-knitr::opts_chunk$set(eval = FALSE, echo = TRUE)
+#knitr::opts_chunk$set(eval = FALSE, echo = TRUE)
 ```
 
 _One or two paragraphs motivating CTF, including use cases_
@@ -34,7 +34,7 @@ if(dir.exists("iris_ctf_data"))
 write.ctf(iris, "iris_ctf_data")
 ```
 
-The directory `iris_ctf_data` now contains files corresponding to the columns in `iris`.
+The code above created the directory `iris_ctf_data`, and wrote files corresponding to the columns in `iris`, plus one file for the metadata.
 
 ```{R}
 list.files("iris_ctf_data")
@@ -42,15 +42,45 @@ list.files("iris_ctf_data")
 colnames(iris)
 ```
 
-TODO: add test.
+```{R, include=FALSE}
+files = list.files("iris_ctf_data")
 
-We can read the data saved in ctf format back into R as `iris2`, and make sure it's the same as the original `iris` we started with.
+if(!(sum(endsWith(files, ".json")) == 1))
+    stop("Expected 1 JSON file with metadata.")
+
+if(!(length(files) == length(iris) + 1))
+    stop("Expected files for each column, plus one for metadata.")
+```
+
+The column files are just plain text.
+Let's verify by reading the first 5 lines.
 
 ```{R}
-iris2 = read.ctf("iris_ctf_data")
+pl_file <- file.path("iris_ctf_data", "Petal.Length")
+readLines(pl_file, n = 5L)
 
-all.equal(iris, iris2)
+iris[1:5, "Petal.Length"]
 ```
+
+```{R, include=FALSE}
+from_file = readLines(pl_file, n = 5L)
+expected = iris[1:5, "Petal.Length"]
+
+if(!all.equal(as.numeric(from_file), expected))
+    stop("Data from ctf doesn't match.")
+```
+
+We can read the data saved in ctf format back into R as `iris2`, and make sure the data matches our original `iris` data.
+
+```{R}
+iris2 <- read.ctf("iris_ctf_data")
+head(iris2)
+
+# Same thing:
+head(iris)
+```
+
+TODO: handle factors.
 
 Clean up:
 
@@ -79,3 +109,7 @@ Short term, storing the metadata in an attribute seems like the best design.
 It's a data frame, so it won't break code if we switch from a list to a data frame in the future.
 Long term, it makes more sense to create and depend on a more focused package for labeled data that's tied to CSVW.
 This is close to the original xarray approach of creating a Python object in memory that mirrors the netCDF object on disk.
+
+---
+
+It's simpler not to append `.txt` to the end of the column names, because a column name might end with `.txt`, and that would be confusing.
