@@ -74,39 +74,20 @@ read.ctf = function(location, columns = NULL, ...)
 
 type_lookup = function()
 {
-    tm = read.table(header = TRUE, text = "
+    read.table(header = TRUE, text = "
 meta        R
+boolean     logical
 integer     integer
-string      character
 double      double
+string      character
 ")
-
-    if(to == "R"){
-        from = "meta"
-    } else if(to == "meta"){
-        from = "R"
-    }
-
-    locs = match(x, tm[[from]])
-    tm[locs, to]
 }
 
 
-map_types = function(x, to = "R")
+scan_what_args = function(meta_types)
 {
-    tm = read.table(header = TRUE, text = "
-meta        R
-integer     integer
-string      character
-double      double
-")
-
-    if(to == "R"){
-        from = "meta"
-    } else if(to == "meta"){
-        from = "R"
-    }
-
-    locs = match(x, tm[[from]])
-    tm[locs, to]
+    lookup = type_lookup()
+    locs = match(meta_types, lookup[["meta"]])
+    funcs = lookup[locs, "R"]
+    lapply(funcs, do.call, list())  # What a strange line of code this is!
 }
