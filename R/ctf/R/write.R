@@ -17,8 +17,7 @@
 #' iris2 <- read.ctf(d)
 write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
 {
-    # This first implementation assumes metadata and data are in the same directory.
-    # This assumption seems like a reasonable best practice for local files, but we'll want to generalize it for objects in cloud storage.
+    # Assume metadata and data are in the same directory, which seems like a reasonable best practice for local files, but we'll want to generalize it for objects in cloud storage.
 
     meta = list(`@context` = "http://www.w3.org/ns/csvw"
                 , url = "."
