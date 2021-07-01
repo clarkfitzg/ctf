@@ -89,5 +89,5 @@ string      character
 
 read_one_col = function(con, ...)
 {
-    mstrsplit(readAsRaw(con), sep = NA, ncol = 1L, ...)
+    iotools::mstrsplit(iotools::readAsRaw(con), sep = NA, ncol = 1L, ...)
 }

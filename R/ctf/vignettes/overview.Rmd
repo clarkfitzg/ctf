@@ -23,27 +23,23 @@ library(ctf)
 
 The following examples use R's builtin `iris` dataset.
 
-First, let's save `iris` in CTF format inside the directory `iris_ctf_data`.
-
-```{R, include=FALSE}
-if(dir.exists("iris_ctf_data")) 
-    stop("Directory already exists, so we shouldn't mess with it.")
-```
+First, let's save `iris` in CTF format inside `iris_ctf_data`, a subdirectory of our temporary directory.
 
 ```{R}
-write.ctf(iris, "iris_ctf_data")
+d <- file.path(tempdir(), "iris_ctf_data")
+write.ctf(iris, d)
 ```
 
 The code above created the directory `iris_ctf_data`, and wrote files corresponding to the columns in `iris`, plus one file for the metadata.
 
 ```{R}
-list.files("iris_ctf_data")
+list.files(d)
 
 colnames(iris)
 ```
 
 ```{R, include=FALSE}
-files = list.files("iris_ctf_data")
+files = list.files(d)
 
 if(!(sum(endsWith(files, ".json")) == 1))
     stop("Expected 1 JSON file with metadata.")
@@ -56,7 +52,7 @@ The column files are just plain text.
 Let's verify by reading the first 5 lines.
 
 ```{R}
-pl_file <- file.path("iris_ctf_data", "Petal.Length")
+pl_file <- file.path(d, "Petal.Length")
 readLines(pl_file, n = 5L)
 
 iris[1:5, "Petal.Length"]
@@ -73,43 +69,15 @@ if(!all.equal(as.numeric(from_file), expected))
 We can read the data saved in ctf format back into R as `iris2`, and make sure the data matches our original `iris` data.
 
 ```{R}
-iris2 <- read.ctf("iris_ctf_data")
+iris2 <- read.ctf(d)
 head(iris2)
 
 # Same thing:
 head(iris)
 ```
 
-TODO: handle factors.
-
 Clean up:
 
 ```{R}
-unlink("iris_ctf_data", recursive = TRUE)
+unlink(d, recursive = TRUE)
 ```
-
-
-## Design Notes
-
-It's not sufficient to return a data frame from `read.ctf`, because that will ignore all the description metadata that existed in the JSON file, for example, the description of the columns.
-We need a way to preserve and represent this metadata in R.
-
-Here's a couple options for what `read.ctf` could return:
-
-1. list with the data frame and the metadata objects
-2. data frame with metadata as an attribute
-3. data frame with metadata in a comment- seems like a bad idea to put metadata back into a string.
-
-Ideally, we could pick the functionality of describing data up from an existing package.
-Based on a few Google searchs like this [StackOverflow post](https://stackoverflow.com/questions/11348320/is-there-a-standard-way-to-document-data-frames?noredirect=1&lq=1) it looks like the "Hmisc" package may have this functionality.
-The [labelVector package](https://cran.r-project.org/package=labelVector) also seems like the right idea.
-Unfortunately, the `get`, `set` methods aren't idiomatic R, and the package isn't on Github.
-
-Short term, storing the metadata in an attribute seems like the best design.
-It's a data frame, so it won't break code if we switch from a list to a data frame in the future.
-Long term, it makes more sense to create and depend on a more focused package for labeled data that's tied to CSVW.
-This is close to the original xarray approach of creating a Python object in memory that mirrors the netCDF object on disk.
-
----
-
-It's simpler not to append `.txt` to the end of the column names, because a column name might end with `.txt`, and that would be confusing.

@@ -15,6 +15,12 @@
 #' 
 #' # Same object as iris, but carries around some extra metadata
 #' iris2 <- read.ctf(d)
+#' 
+#' # This directory contains plain text files for each column in iris
+#' list.files(d)
+#' 
+#' # Clean up
+#' unlink(d, recursive = TRUE)
 write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
 {
     # Assume metadata and data are in the same directory, which seems like a reasonable best practice for local files, but we'll want to generalize it for objects in cloud storage.
@@ -44,7 +50,7 @@ write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
     # TODO: TDD if(dir.exists(datadir) && (notempty)) stop("best practice is to write data in an empty directory. The directory ... contains the files ... Move these files or use a different datadir")
     dir.create(datadir)
     jsonlite::write_json(meta, metafile_path)
-    Map(write.table.raw, x, file = file.path(datadir, col_names), MoreArgs = list(...))
+    Map(iotools::write.table.raw, x, file = file.path(datadir, col_names), MoreArgs = list(...))
 
     invisible(NULL)
 }

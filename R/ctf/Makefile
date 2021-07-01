@@ -42,4 +42,4 @@ docs: $(VIGNETTES)
 	cp vignettes/*.html inst/doc
 
 clean:
-	rm -rf vignettes/*.html $(PKG) *.Rcheck
+	rm -rf vignettes/*.html inst/doc/*.html $(PKG) *.Rcheck
