@@ -31,7 +31,7 @@ test: $(TESTFILES) $(GEN_SCRIPT_OUTPUT)
 $(PKG): $(RFILES) $(TESTFILES) $(TEMPLATES) $(VIGNETTES) DESCRIPTION
 	R -e "devtools::document()"
 	rm -f $(PKG)  # Otherwise it's included in build
-	R CMD build . --no-build-vignettes
+	R CMD build .
 
 check: $(PKG)
 	R CMD check $(PKG) --as-cran --run-dontrun
