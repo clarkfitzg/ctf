@@ -33,7 +33,9 @@ $(PKG): $(RFILES) $(TESTFILES) $(TEMPLATES) $(VIGNETTES) DESCRIPTION
 	rm -f $(PKG)  # Otherwise it's included in build
 	R CMD build .
 
-check: $(PKG)
+check:
+	make clean
+	make $(PKG)
 	R CMD check $(PKG) --as-cran --run-dontrun
 
 docs: $(VIGNETTES)
