@@ -5,9 +5,9 @@
 #' @param x data frame to write
 #' @param datadir directory to write the metadata and CTF columns
 #' @param name table name
-#' @param ... further arguments to \code{\link[base]{cat}}
+#' @param ... further arguments to \code{\link[iotools]{write.table.raw}}
 #' @return \code{NULL}, used for its side effect
-#' @seealso \code{\link{read.ctf}} to read CTF, \code{\link[base]{cat}} for the underlying functionality, and \code{\link[base]{save}} for writing any R objects.
+#' @seealso \code{\link{read.ctf}} to read CTF, \code{\link[iotools]{write.table.raw}} for the underlying functionality, and \code{\link[base]{save}} for writing any R objects.
 #' @export
 #' @examples
 #' d <- file.path(tempdir(), "iris_ctf_data")
@@ -30,12 +30,12 @@ write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
     x = factor_to_character(x)
 
     col_names = colnames(x)
-    R_types = sapply(x, typeof)
+    R_class = sapply(x, class)
 
     meta[["tableSchema"]] = list(columns = Map(list
         , url = col_names
         , titles = col_names
-        , datatype = map_types(R_types, to = "meta")
+        , datatype = map_types(R_class, to = "meta")
     ))
 
     metafile_path = file.path(datadir, paste0(name, "-metadata.json"))
@@ -44,8 +44,7 @@ write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
     # TODO: TDD if(dir.exists(datadir) && (notempty)) stop("best practice is to write data in an empty directory. The directory ... contains the files ... Move these files or use a different datadir")
     dir.create(datadir)
     jsonlite::write_json(meta, metafile_path)
-    # TODO: Check if cat() or writeLines() is faster.
-    Map(cat, x, file = file.path(datadir, col_names), sep = "\n", MoreArgs = list(...))
+    Map(write.table.raw, x, file = file.path(datadir, col_names), MoreArgs = list(...))
 
     invisible(NULL)
 }

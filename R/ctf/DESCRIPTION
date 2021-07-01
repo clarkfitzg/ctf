@@ -10,7 +10,8 @@ Maintainer: Clark Fitzgerald <clarkfitzg@gmail.com>
 Depends:
     R (>= 3.1.0)
 Imports:
-    jsonlite
+    jsonlite,
+    iotools
 Suggests: 
     roxygen2,
     knitr,
