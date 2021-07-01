@@ -39,6 +39,7 @@ check: $(PKG)
 docs: $(VIGNETTES)
 	make install
 	R -e "tools::buildVignettes(dir = '.')"
+	cp vignettes/*.html inst/doc
 
 clean:
 	rm -rf vignettes/*.html $(PKG) *.Rcheck
