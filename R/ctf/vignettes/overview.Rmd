@@ -12,7 +12,23 @@ vignette: >
 #knitr::opts_chunk$set(eval = FALSE, echo = TRUE)
 ```
 
-_One or two paragraphs motivating CTF, including use cases_
+## Introduction
+
+Column Text Format (CTF) stores the columns of tabular data in plain text, combining performance with simplicity.
+CTF is a general purpose data storage format like CSV, but faster when loading a subset of the columns, because it's a column store.
+The storage itself consists of two components: plain text files for each column in a table or data frame, and a metadata file describing the data.
+The metadata file contains information required for fast, accurate data loading, such as the type of each column, and the number of rows.
+This package provides functions to read and write CTF data from R.
+
+#### When to use?
+
+CTF is useful for teaching, particularly when working with large data sets.
+It's also good for those who prefer transparent plain text over binary formats.
+
+#### When not to use?
+
+CTF is new as of 2021, and subject to significant changes.
+For serious production use consider established columnar storage technologies such as [HDF5](https://www.hdfgroup.org/) or [Apache Parquet](https://parquet.apache.org/).
 
 
 ## Quick Start
