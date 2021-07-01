@@ -1,6 +1,6 @@
 Package: ctf
 Type: Package
-Title: read and write column text format (CTF)
+Title: Read and Write Column Text Format (CTF)
 Version: 0.1
 Date: 2021-06-21
 Authors@R: person("Clark", "Fitzgerald", role = c("aut", "cre"),

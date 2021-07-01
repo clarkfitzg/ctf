@@ -76,7 +76,7 @@ read.ctf = function(location, columns = NULL, ...)
 map_types = function(x, to = "R")
 {
 	# These 4 are really all we can do.
-    lookup = read.table(header = TRUE, text = "
+    lookup = utils::read.table(header = TRUE, text = "
 meta        R
 boolean     logical
 integer     integer
