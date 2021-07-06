@@ -2,22 +2,24 @@
 #' 
 #' Read external CTF data into the corresponding R object
 #' 
-#' @param location location of the CTF data.
-#'      Typically this is the file path to a local directory.
+#' @param location location of the CTF data, either a file path to a CTF metadata JSON file, or a directory containing a single CTF metadata JSON file.
 #' @param columns names of the columns to read.
-#'      If \code{columns=NULL}, the default, then read in all columns.
+#'      If missing, then read in all columns.
+#' @param nrows integer, the maximum number of rows to read in.
+#'      If missing, then read in all rows.
 #' @return data frame of loaded data
 #' @seealso \code{\link{write.ctf}} to write CTF
 #' @export
 #' @examples
+#' # An example CTF metadata file included in this package
 #' d <- system.file("extdata", "vgsales", "vgsales-metadata.json", package = "ctf")
 #'
-#' # Read all the columns
+#' # Read all the rows and columns
 #' vgsales <- read.ctf(d)
 #'
-#' # Read two columns, Name and Rank
-#' vgsales2 <- read.ctf(d, columns = c("Name", "Rank"))
-read.ctf = function(location, columns = NULL) 
+#' # Read 10 rows of two columns, Name and Rank
+#' vgsales2 <- read.ctf(d, columns = c("Name", "Rank"), nrows = 10)
+read.ctf = function(location, columns, nrows)
 {
     # TODO: check there's only one metadata file, make sure it exists, etc.
     if(dir.exists(location)){
@@ -33,7 +35,7 @@ read.ctf = function(location, columns = NULL)
     # TODO: Handle case of multiple titles identifying a single column, but that's far down the road.
     alltitles = sapply(colschema, `[[`, "titles")
 
-    if(is.null(columns)){
+    if(missing(columns)){
         titles = alltitles
     } else {
         titles = columns
@@ -48,8 +50,10 @@ read.ctf = function(location, columns = NULL)
     metatypes = sapply(colschema, `[[`, "datatype")
     type_iotools = map_types(metatypes, to = "type_iotools")
 
-    # TODO: handle missing
-    nrows = meta[["rowCount"]]
+    if(missing(nrows)){
+        # TODO: handle missing in metadata
+        nrows = meta[["rowCount"]]
+    }
 
     columns = Map(read_one_col, con = colfiles, type = type_iotools, nrows = nrows)
 
