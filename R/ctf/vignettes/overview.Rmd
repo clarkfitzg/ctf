@@ -28,7 +28,7 @@ __What is CTF good for?__
 2. Integrating with UNIX style text processing pipelines
 
 
-__When should I use a different data storage format?__
+__What are the alternatives to CTF?__
 
 If CTF isn't _exactly_ what you need, then you will be better off with a more established and stable data format.
 CSV works fine in many cases.

@@ -1,13 +1,13 @@
 #' Read CTF data
 #' 
-#' Read external CTF data into the corresponding R object
+#' Read external CTF data into the corresponding R data frame.
 #' 
 #' @param location location of the CTF data, either a file path to a CTF metadata JSON file, or a directory containing a single CTF metadata JSON file.
 #' @param columns names of the columns to read.
 #'      If missing, then read in all columns.
 #' @param nrows integer, the maximum number of rows to read in.
 #'      If missing, then read in all rows.
-#' @return data frame of loaded data
+#' @return data frame
 #' @seealso \code{\link{write.ctf}} to write CTF
 #' @export
 #' @examples
