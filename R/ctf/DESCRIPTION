@@ -18,10 +18,10 @@ Suggests:
     rmarkdown,
     testthat
 Description:
-    Column Text Format (CTF) stores the columns of tabular data in plain text, combining performance with simplicity.
-    CTF is a general purpose data storage format like CSV, but faster when loading a subset of the columns, because it's a column store.
-    The storage itself consists of two components: plain text files for each column in a table or data frame, and a metadata file describing the data.
-    The metadata file contains information required for fast, accurate data loading, such as the type of each column, and the number of rows.
+    Column Text Format (CTF) is a new tabular data format designed for simplicity and performance.
+    CTF is the simplest column store you can imagine: plain text files for each column in a table, and a metadata file.
+    The underlying plain text means the data is human readable and familiar to programmers, unlike specialized binary formats.
+    CTF is faster than row oriented formats like CSV when loading a subset of the columns in a table.
     This package provides functions to read and write CTF data from R.
 License: MIT + file LICENSE
 URL: https://github.com/julianofhernandez/ctf

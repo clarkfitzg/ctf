@@ -14,21 +14,31 @@ vignette: >
 
 ## Introduction
 
-Column Text Format (CTF) stores the columns of tabular data in plain text, combining performance with simplicity.
-CTF is a general purpose data storage format like CSV, but faster when loading a subset of the columns, because it's a column store.
-The storage itself consists of two components: plain text files for each column in a table or data frame, and a metadata file describing the data.
-The metadata file contains information required for fast, accurate data loading, such as the type of each column, and the number of rows.
+Column Text Format (CTF) is a new tabular data format designed for simplicity and performance.
+CTF is the simplest column store you can imagine: it represents each column in a table as a plain text file.
+The underlying plain text means the data is human readable and familiar to programmers, unlike specialized binary formats.
+CTF is faster than row oriented formats like CSV when loading a subset of the columns in a table.
 This package provides functions to read and write CTF data from R.
 
-#### When to use?
 
-CTF is useful for teaching, particularly when working with large data sets.
-It's also good for those who prefer transparent plain text over binary formats.
+__What is CTF good for?__
 
-#### When not to use?
+1. Teaching the concept of column stores
+3. Processing large data sets
+2. Integrating with UNIX style text processing pipelines
 
-CTF is new as of 2021, and subject to significant changes.
-For serious production use consider established columnar storage technologies such as [HDF5](https://www.hdfgroup.org/) or [Apache Parquet](https://parquet.apache.org/).
+
+__When should I use a different data storage format?__
+
+If CTF isn't _exactly_ what you need, then you will be better off with a more established and stable data format.
+CSV works fine in many cases.
+If you need better performance, then consider existing columnar storage technologies such as [HDF5](https://www.hdfgroup.org/) or [Apache Parquet](https://parquet.apache.org/).
+
+
+__Anything else?__
+
+We created CTF in 2021, and we expect the metadata file associated with it to evolve significantly.
+Until version 1.0 is ready, anything could change at any time, and we make no promises about compatibility.
 
 
 ## Quick Start
@@ -46,7 +56,7 @@ d <- file.path(tempdir(), "iris_ctf_data")
 write.ctf(iris, d)
 ```
 
-The code above created the directory `iris_ctf_data`, and wrote files corresponding to the columns in `iris`, plus one file for the metadata.
+The code above created the directory `iris_ctf_data` inside a temporary directory, and wrote files corresponding to the columns in `iris`, plus one file for the metadata.
 
 ```{R}
 list.files(d)
