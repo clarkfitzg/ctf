@@ -44,3 +44,8 @@ def list_files(folder_name, bucket_name=None):
             if(obj.key[-4:] == '.txt'):
                 files.append(obj.key)
     return files
+
+def get_file_name(file_path):
+    '''Removes trailing structure and extension to just return the file name'''
+    base=os.path.basename(file_path)
+    return os.path.splitext(base)[0]

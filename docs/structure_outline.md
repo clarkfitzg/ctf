@@ -45,10 +45,16 @@ for row in reader_obj[[3,5,7]]:
 
 
 ## Writing
-For writing we will need a writer object with a write function that will perform data validation.
+For writing we will need a writer object with a write function that will perform data validation. Additionally there needs to be two ways to write to a file, one that used the relative indexes of the passed array, and another where you use a dictionary with keys to specify which file each item must be written to.
 ```python
 writer_obj = ctf.writer(dir_name)
 writer_obj.write("Julian", "1/1/1999", 6.0)
+```
+```python
+writer_obj = ctf.writer(dir_name)
+writer_obj.write(name="Julian", birthdate="1/1/1999", height=6.0)
+# OR
+writer_obj.write(name=["Julian", "Bill"], birthdate=["1/1/1999", "2/3/1994"], height=[6.0,5.7])
 ```
 Because CTF will perform  conversion when reading, writing values need to be validated. With ```write()``` an exception will be thrown if the data doesn't conform to the standards set in the metadata. However, a user can also call ```validate(data)``` to get a boolean value of whether this data will write correctly.
 ```python
