@@ -21,10 +21,10 @@
 #' 
 #' # Clean up
 #' unlink(d, recursive = TRUE)
-write.ctf = function(x, name, datadir = name, ...) #deparse(substitute(x)) stopped working
+write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
 {
     # Assume metadata and data are in the same directory, which seems like a reasonable best practice for local files, but we'll want to generalize it for objects in cloud storage.
-
+    name = name
     meta = list(`@context` = "http://www.w3.org/ns/csvw")
     # TODO: Allow users to add their own metadata
 
