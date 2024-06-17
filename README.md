@@ -13,7 +13,6 @@ Things to show (our killer features):
 2. CTF we don't need to specify types.
 3. CTF code is more concise than CSV.
 
-
 CTF:
 
 ```python
