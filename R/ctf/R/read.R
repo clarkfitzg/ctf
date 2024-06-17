@@ -3,7 +3,7 @@
 #' Read external CTF data into the corresponding R data frame.
 #' 
 #' @param location location of the CTF data, either a file path to a CTF metadata JSON file, or a directory containing a single CTF metadata JSON file.
-#' @param columns names of the columns to read.
+#' @param columns names or numbers of the columns to read.
 #'      If missing, then read in all columns.
 #' @param nrows integer, the maximum number of rows to read in.
 #'      If missing, then read in all rows.
@@ -19,6 +19,9 @@
 #'
 #' # Read 10 rows of two columns, Name and Rank
 #' vgsales2 <- read.ctf(d, columns = c("Name", "Rank"), nrows = 10)
+#' 
+#' #Read 5 rows of first 3 columns
+#' vgsales3 <- read.ctf(d, columns = 1:3, nrows = 5)
 read.ctf = function(location, columns, nrows)
 {
     # TODO: check there's only one metadata file, make sure it exists, etc.
@@ -30,13 +33,16 @@ read.ctf = function(location, columns, nrows)
     }
 
     meta = jsonlite::read_json(metafile)
-    colschema = meta[["tableSchema"]][["columns"]]
+    colschema = meta[["tables"]][[1]][["tableSchema"]][["columns"]]
 
     # TODO: Handle case of multiple titles identifying a single column, but that's far down the road.
     alltitles = sapply(colschema, `[[`, "titles")
 
     if(missing(columns)){
         titles = alltitles
+    } else if (class(columns) == "numeric"){
+	titles = alltitles[columns]
+        colschema = colschema[columns]
     } else {
         titles = columns
         selected_cols = match(columns, alltitles)
@@ -52,7 +58,7 @@ read.ctf = function(location, columns, nrows)
 
     if(missing(nrows)){
         # TODO: handle missing in metadata
-        nrows = meta[["rowCount"]]
+        nrows = meta[["tables"]][[1]][["rowCount"]]
     }
 
     columns = Map(read_one_col, con = colfiles, type = type_iotools, nrows = nrows)
@@ -76,7 +82,7 @@ map_types = function(x, to)
 meta        type_iotools
 boolean     logical
 integer     integer
-double      numeric
+number      numeric
 string      character
 ")
 

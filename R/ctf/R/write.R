@@ -24,12 +24,8 @@
 write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
 {
     # Assume metadata and data are in the same directory, which seems like a reasonable best practice for local files, but we'll want to generalize it for objects in cloud storage.
-
-    meta = list(`@context` = "http://www.w3.org/ns/csvw"
-                , url = "."
-                , rowCount = nrow(x)
-                , name = name
-    )
+    name = name
+    meta = list(`@context` = "http://www.w3.org/ns/csvw")
     # TODO: Allow users to add their own metadata
 
     # Eventually we'll want to preserve the factor structure in the metadata.
@@ -38,11 +34,14 @@ write.ctf = function(x, datadir = name, name = deparse(substitute(x)), ...)
     col_names = colnames(x)
     R_class = sapply(x, class)
 
-    meta[["tableSchema"]] = list(columns = Map(list
-        , url = col_names
-        , titles = col_names
-        , datatype = map_types(R_class, to = "meta")
-    ))
+    df = data.frame(
+        url = col_names,
+        titles = col_names,
+        datatype = map_types(R_class, to = "meta")
+    )
+  
+    meta[["tables"]] = list(list(url = ".", rowCount = nrow(x), tableSchema = list(columns = df))) 
+    # need rowCount for read.ctf nrows
 
     metafile_path = file.path(datadir, paste0(name, "-metadata.json"))
 
