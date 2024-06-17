@@ -82,7 +82,7 @@ map_types = function(x, to)
 meta        type_iotools
 boolean     logical
 integer     integer
-double      numeric
+number      numeric
 string      character
 ")
 
