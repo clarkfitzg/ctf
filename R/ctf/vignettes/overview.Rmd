@@ -9,37 +9,26 @@ vignette: >
 
 ```{r setup, include=FALSE, eval=TRUE}
 # For development, before I implement.
-#knitr::opts_chunk$set(eval = FALSE, echo = TRUE)
+#knitr::opts_chunk$set(eval = FALSE, echo = TRUE) 
 ```
 
 ## Introduction
 
-Column Text Format (CTF) is a new tabular data format designed for simplicity and performance.
-CTF is the simplest column store you can imagine: it represents each column in a table as a plain text file.
-The underlying plain text means the data is human readable and familiar to programmers, unlike specialized binary formats.
-CTF is faster than row oriented formats like CSV when loading a subset of the columns in a table.
-This package provides functions to read and write CTF data from R.
+Column Text Format (CTF) is a new tabular data format designed for simplicity and performance. CTF is the simplest column store you can imagine: it represents each column in a table as a plain text file. The underlying plain text means the data is human readable and familiar to programmers, unlike specialized binary formats. CTF is faster than row oriented formats like CSV when loading a subset of the columns in a table. This package provides functions to read and write CTF data from R.
 
+**What is CTF good for?**
 
-__What is CTF good for?__
+1.  Teaching the concept of column stores
+2.  Processing large data sets
+3.  Integrating with UNIX style text processing pipelines
 
-1. Teaching the concept of column stores
-3. Processing large data sets
-2. Integrating with UNIX style text processing pipelines
+**What are the alternatives to CTF?**
 
+If CTF isn't *exactly* what you need, then you will be better off with a more established and stable data format. CSV works fine in many cases. If you need better performance, then consider existing columnar storage technologies such as [HDF5](https://www.hdfgroup.org/) or [Apache Parquet](https://parquet.apache.org/).
 
-__What are the alternatives to CTF?__
+**Anything else?**
 
-If CTF isn't _exactly_ what you need, then you will be better off with a more established and stable data format.
-CSV works fine in many cases.
-If you need better performance, then consider existing columnar storage technologies such as [HDF5](https://www.hdfgroup.org/) or [Apache Parquet](https://parquet.apache.org/).
-
-
-__Anything else?__
-
-We created CTF in 2021, and we expect the metadata file associated with it to evolve significantly.
-Until version 1.0 is ready, anything could change at any time, and we make no promises about compatibility.
-
+We created CTF in 2021, and we expect the metadata file associated with it to evolve significantly. Until version 1.0 is ready, anything could change at any time, and we make no promises about compatibility.
 
 ## Quick Start
 
@@ -74,8 +63,7 @@ if(!(length(files) == length(iris) + 1))
     stop("Expected files for each column, plus one for metadata.")
 ```
 
-The column files are just plain text.
-Let's verify by reading the first 5 lines.
+The column files are just plain text. Let's verify by reading the first 5 lines.
 
 ```{R}
 pl_file <- file.path(d, "Petal.Length")
@@ -100,6 +88,20 @@ head(iris2)
 
 # Same thing:
 head(iris)
+```
+
+We can read only desired columns, similar to select. And we can choose the number of rows to display, similar to head.
+
+```{R}
+iris2 <- read.ctf(location = d,c("Sepal.Width", "Petal.Length"), nrows = 10)
+iris2
+```
+
+Or equivalently we may select columns by number.
+
+```{R}
+iris2 <- read.ctf(location = d,c(2,3), nrows = 10)
+iris2
 ```
 
 Clean up:
