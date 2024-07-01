@@ -3,9 +3,12 @@ import os
 import time
 import glob
 import json
+import pandas as pd
 from .column import Column
 from .file_management import list_files, open_iterator, full_file
 
+META_TYPE = "json"
+"""Legacy code. Kept temporarily as context.
 class Reader:
     '''
     This class will be used to convert to and from Ctf files
@@ -173,3 +176,58 @@ def stream_convert_csv_to_ctf(stream, path, name, **kwargs):
         for value, ctf_file in zip(row, ctf_files):
             ctf_file.write(value + "\n")
             #ctf_file.writeline(value) ??
+"""
+def findMeta(location)
+    metafile = None
+    #Iterate through the files in the location.
+    for root, dirs, files in os.walk(."location"):
+        #check if any have the type used for metadata.
+        for name in files:
+            #Find the first file of the type used for metadata. Upon finding it, assign it to metafile and break.
+            if name.endswith(META_TYPE):
+                metafile = name
+                break
+    #If the directory doesn't have a metafile, throw an error and break.
+    #Check how we want to do error logging
+    if(metafile == None)
+        #TODO Print Error
+    return metafile
+        
+
+#Read a ctf metadata file to create a dataframe. It will read nrows rows from each column file. 
+def read(location, columns, nrows)
+    metafile = findMeta(location)
+    dataframe = None
+    if(metafile != None)
+        file = open(metafile, "r")
+        metadata = json.loads(file.read())
+        for col in columns:
+            #todo if col not in metafile
+            #processes if the columns are selected as int.
+            columnActual = None
+            if isinstance(col, int):
+                columnActual = col
+            else 
+                for columnID, metaColumns in enumerate(metadata['tableSchema'])
+                    if(metaColumns['titles']) == col:
+                        columnActual=columnID
+            colName = metadata['tableSchema'][columnActual]
+            colLocation = metadata['tableSchema'][columnActual]['url']
+            colFile = open(colLocation, "r")
+            head = [next(colFile) for _ in range(nrows)]
+            row = {colName:head}
+            if dataframe:
+                dataframe.append(row)
+            else:
+                dataframe = pd.DataFrame = (row)
+    return dataframe
+
+#If the number of rows isn't specified, grab the number of rows from metadata and select that many. Should grab all rows if metadata is sound.
+def read(location, columns)
+    metafile = findMeta(location)
+    if(metafile != None)
+        file = open(metafile, "r")
+        metadata = json.loads(file.read())
+        #TODO if!metadata[rowCount]
+        read(location, columns, metadata[rowCount])
+    
