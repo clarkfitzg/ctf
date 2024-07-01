@@ -9,7 +9,7 @@ vignette: >
 
 ```{r setup, include=FALSE, eval=TRUE}
 # For development, before I implement.
-#knitr::opts_chunk$set(eval = FALSE, echo = TRUE)
+#knitr::opts_chunk$set(eval = FALSE, echo = TRUE) 
 ```
 
 ## Introduction
