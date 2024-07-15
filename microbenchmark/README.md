@@ -29,7 +29,7 @@ seconds on average to finish its. It is an over 100 times faster than
 
 ![](threecolumnsec.png)<!-- -->
 
-![](tencolunsec.png)<!-- -->
+![](tencolumnsec.png)<!-- -->
 
 Even when reading more columns, on average, `read.ctf` is much faster
 than `read.csv` and `read.csv.raw`. While the more column mean a long
