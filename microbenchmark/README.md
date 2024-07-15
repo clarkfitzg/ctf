@@ -18,7 +18,7 @@ rows by 22 column dataset.
 
 ## Comparing read speed for 1, 3 and 10 columns
 
-![](README_figs/README-unnamed-chunk-7-1.png)<!-- -->
+![](microbenchmark/onecolsec.png)<!-- -->
 
 For each read, there is a boxplot representing the 100 reads done
 through `{microbenchmark}` . While `read.csv.raw` takes about 16 seconds
