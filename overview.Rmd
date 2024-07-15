@@ -1,0 +1,111 @@
+---
+title: Overview
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE, eval=TRUE}
+# For development, before I implement.
+#knitr::opts_chunk$set(eval = FALSE, echo = TRUE)
+```
+
+## Introduction
+
+Column Text Format (CTF) is a new tabular data format designed for simplicity and performance. CTF is the simplest column store you can imagine: it represents each column in a table as a plain text file. The underlying plain text means the data is human readable and familiar to programmers, unlike specialized binary formats. CTF is faster than row oriented formats like CSV when loading a subset of the columns in a table. This package provides functions to read and write CTF data from R.
+
+**What is CTF good for?**
+
+1.  Teaching the concept of column stores
+2.  Processing large data sets
+3.  Integrating with UNIX style text processing pipelines
+
+**What are the alternatives to CTF?**
+
+If CTF isn't *exactly* what you need, then you will be better off with a more established and stable data format. CSV works fine in many cases. If you need better performance, then consider existing columnar storage technologies such as [HDF5](https://www.hdfgroup.org/) or [Apache Parquet](https://parquet.apache.org/).
+
+**Anything else?**
+
+We created CTF in 2021, and we expect the metadata file associated with it to evolve significantly. Until version 1.0 is ready, anything could change at any time, and we make no promises about compatibility.
+
+## Quick Start
+
+```{R}
+library(ctf)
+```
+
+The following examples use R's builtin `iris` dataset.
+
+First, let's save `iris` in CTF format inside `iris_ctf_data`, a subdirectory of our temporary directory.
+
+```{R}
+d <- file.path(tempdir(), "iris_ctf_data")
+write.ctf(iris, d)
+```
+
+The code above created the directory `iris_ctf_data` inside a temporary directory, and wrote files corresponding to the columns in `iris`, plus one file for the metadata.
+
+```{R}
+list.files(d)
+
+colnames(iris)
+```
+
+```{R, include=FALSE}
+files = list.files(d)
+
+if(!(sum(endsWith(files, ".json")) == 1))
+    stop("Expected 1 JSON file with metadata.")
+
+if(!(length(files) == length(iris) + 1))
+    stop("Expected files for each column, plus one for metadata.")
+```
+
+The column files are just plain text. Let's verify by reading the first 5 lines.
+
+```{R}
+pl_file <- file.path(d, "Petal.Length")
+readLines(pl_file, n = 5L)
+
+iris[1:5, "Petal.Length"]
+```
+
+```{R, include=FALSE}
+from_file = readLines(pl_file, n = 5L)
+expected = iris[1:5, "Petal.Length"]
+
+if(!all.equal(as.numeric(from_file), expected))
+    stop("Data from ctf doesn't match.")
+```
+
+We can read the data saved in ctf format back into R as `iris2`, and make sure the data matches our original `iris` data.
+
+```{R}
+iris2 <- read.ctf(d)
+head(iris2)
+
+# Same thing:
+head(iris)
+```
+
+We can read only desired columns, similar to select. And we can choose the number of rows to display, similar to head.
+
+```{R}
+iris2 <- read.ctf(location = d,c("Sepal.Width", "Petal.Length"), nrows = 10)
+iris2
+```
+
+Or equivalently we may select columns by number.
+
+```{R}
+iris2 <- read.ctf(location = d,c(2,3), nrows = 10)
+iris2
+```
+
+Clean up:
+
+```{R}
+unlink(d, recursive = TRUE)
+```
