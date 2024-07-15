@@ -23,14 +23,14 @@
 #' unlink("vgsales", recursive = TRUE)
 to_ctf = function(csvpath, datadir, ...)
 {
-	datadir = basename(datadir)
+	name = basename(datadir)
 	cutdf = iotools::read.csv.raw(csvpath, header = FALSE, nrows = 1)
 	col_names = unlist(split(cutdf, seq(nrow(cutdf))))
 	iotools::chunk.apply(csvpath, 
 			     function(x){
 				df = iotools::read.csv.raw(x)
 				colnames(df) = col_names
-				write.ctf(df, datadir, name = datadir, appendRows = TRUE, ...)
+				write.ctf(df, datadir, name = name, appendRows = TRUE, ...)
 				}, 
 				CH.MAX.SIZE = 2e5)
       	invisible(NULL)
