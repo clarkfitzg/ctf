@@ -18,7 +18,7 @@ rows by 22 column dataset.
 
 ## Comparing read speed for 1, 3 and 10 columns
 
-![](README_figs/README-unnamed-chunk-7-1.png)<!-- -->
+![plot](onecolsec.png)<!-- -->
 
 For each read, there is a boxplot representing the 100 reads done
 through `{microbenchmark}` . While `read.csv.raw` takes about 16 seconds
@@ -27,9 +27,9 @@ their reads, `read.ctf` does not even show on the graph taking 0.4
 seconds on average to finish its. It is an over 100 times faster than
 `read.csv` and 40 times than `read.csv.raw`.
 
-![](README_figs/README-column3%20-1.png)<!-- -->
+![](threecolumnsec.png)<!-- -->
 
-![](README_figs/README-column10%20-1.png)<!-- -->
+![](tencolunsec.png)<!-- -->
 
 Even when reading more columns, on average, `read.ctf` is much faster
 than `read.csv` and `read.csv.raw`. While the more column mean a long
@@ -38,7 +38,7 @@ columns, takes a similar amount of time to read the columns no matter
 how many columns is selected, around 15 seconds for `read.csv.raw` and
 around 40 seconds for `read.csv`.
 
-![](README_figs/README-entire-1.png)<!-- -->
+![](allcolumnsec.png)<!-- -->
 
 When reading in the entire dataset, `read.ctf` is slightly slower than
 `read.csv.raw` taking 15.3 seconds on average to read the entire dataset
