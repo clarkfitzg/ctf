@@ -28,6 +28,7 @@ seconds on average to finish its. It is an over 100 times faster than
 `read.csv` and 40 times than `read.csv.raw`.
 
 ![](README_figs/README-column3%20-1.png)<!-- -->
+![](threecolumnsec.png)<!-- -->
 
 ![](README_figs/README-column10%20-1.png)<!-- -->
 
