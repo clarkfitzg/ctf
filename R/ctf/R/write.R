@@ -48,7 +48,7 @@ write.ctf = function(x, datadir = name, name = deparse(substitute(x)), appendRow
 
     # Begin saving
     dir_content = c(col_names, paste0(name, "-metadata.json"))
-    # TODO: TDD if(dir.exists(datadir) && (notempty)) stop("best practice is to write data in an empty directory. The directory ... contains the files ... Move these files or use a different datadir")
+ 
     if (!dir.exists(datadir)){
 	dir.create(datadir)
         jsonlite::write_json(meta, metafile_path)
@@ -64,7 +64,7 @@ write.ctf = function(x, datadir = name, name = deparse(substitute(x)), appendRow
 	} else if(!identical(sort(list.files(datadir)), sort(dir_content))){
 		stop("CTF file names must be identical")
 			      
-	} else if(appendRows){ # TODO: rowCount
+	} else if(appendRows){
 		jsonlite::write_json(meta, metafile_path)
 		Map(iotools::write.table.raw, x, file = file.path(datadir, col_names), append = TRUE, MoreArgs = list(...))
 				        
