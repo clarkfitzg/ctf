@@ -90,76 +90,64 @@ head(iris2)
 head(iris)
 ```
 
-We can read only desired columns, similar to select. And we can choose the number of rows to display, similar to head.
+We can read only desired columns or choose the number of rows to display.
 
 ```{R}
-iris2 <- read.ctf(location = d,c("Sepal.Width", "Petal.Length"), nrows = 10)
+iris2 <- read.ctf(location = d, c("Sepal.Width", "Petal.Length"), nrows = 10)
 iris2
 ```
 
 Or equivalently we may select columns by number.
 
 ```{R}
-iris2 <- read.ctf(location = d,c(2,3), nrows = 10)
+iris2 <- read.ctf(location = d, c(2,3), nrows = 10)
 iris2
 ```
 
-Functionality for writing by chunk exists.
-
-```{R}
-# Let's partition iris into three csv chunks.
-iris_part1 <- iris[1:50,]
-iris_part2 <- iris[51:100,]
-iris_part3 <- iris[101:150,]
-
-csv_file1 <- file.path(tempdir(), "iris_part1.csv")
-csv_file2 <- file.path(tempdir(), "iris_part2.csv")
-csv_file3 <- file.path(tempdir(), "iris_part3.csv")
-
-write.csv(iris_part1, file = csv_file1, row.names = FALSE)
-write.csv(iris_part2, file = csv_file2, row.names = FALSE)
-write.csv(iris_part3, file = csv_file3, row.names = FALSE)
-
-# Now convert to ctf
-a <- file.path(tempdir(), "iris_ctf_data2")
-
-to_ctf(csv_file1,a)
-
-
-write.ctf(csv_file2,a)
-to_ctf(csv_file3,a)
-
-iris2 <- read.ctf(a)
-
-# Verify they are equal
-iris2 <- read.ctf(a)
-iris2 == iris
+```{R, include = FALSE}
+# # Functionality for chunking exists. Let's break iris into chunks, then reassemble it into a CTF file.
+# 
+# iris_part1 <- iris[1:50,]
+# iris_part2 <- iris[51:100,]
+# iris_part3 <- iris[101:150,]
+# 
+# a <- file.path(tempdir(), "iris_ctf_data2")
+# 
+# write.ctf(iris_part1, a)
+# write.ctf(iris_part2, a, appendRows = TRUE)
+# write.ctf(iris_part3, a, appendRows = TRUE)
+# 
+# # These are equivalent.
+# 
+# iris2 <- read.ctf(a)
+# iris == iris2
+# 
+# # Clean up
+# unlink(a, recursive = TRUE)
 ```
 
-Functionality for chunking exists. Let's break iris into chunks, then reassemble it into a CTF file.
 
-```{R}
-iris_part1 <- iris[1:50,]
-iris_part2 <- iris[51:100,]
-iris_part3 <- iris[101:150,]
 
-a <- file.path(tempdir(), "iris_ctf_data2")
-
-write.ctf(iris_part1, a)
-write.ctf(iris_part2, a, appendRows = TRUE)
-write.ctf(iris_part3, a, appendRows = TRUE)
-```
-
-These are equivalent.
-
-```{R}
-iris2 <- read.ctf(a)
-iris == iris2
+```{R, include = FALSE}
+# # Conversion between ctf and csv is supported
+# 
+# to_csv(d)
+# 
+# # Verify it worked
+# iris3 <- read.csv("iris_ctf_data.csv")
+# 
+# # Write it back to ctf
+# to_ctf(iris2)
+# 
+# # Verify it worked
+# iris4 <- read.ctf("iris2_ctf_data")
+# 
+# # Verify they are equivalent
+# iris3 == iris4
 ```
 
 Clean up:
 
 ```{R}
 unlink(d, recursive = TRUE)
-unlink(a, recursive = TRUE)
 ```
