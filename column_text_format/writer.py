@@ -6,7 +6,7 @@ METASUFFIX='-metadata'
 META_TYPE = "json"
 COLUMNFILETYPE='txt'
             
-def create(datasetName, location):
+def write(datasetName, location):
     colCounter = 0
     #TODO: check if legit dataset
     dataLoc = 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/'+datasetName+'.csv'
