@@ -1,29 +1,27 @@
 import os, json
 from .column import Column
 from .file_management import list_files, get_file_name
+import json
+import pandas as pd
 
-class Writer:
-    '''This class will be used to read CTF files'''
-
-    def __init__(self, file_path, bucket_name=None):
-        self.file_path = file_path
-        self.file_name = os.path.basename(self.file_path)
-        self.column_file_objects = {} # Stores the file_objects for each column
-        # self.columns = []
-        self.data_types = {}
-        # self.read_metadata()
-        for column_file in list_files(self.file_path, bucket_name):
-            print(column_file)
-            key = get_file_name(column_file)
-            print(key)
-            self.column_file_objects[key] = open(column_file, "a")
-
-    def write(self, data):
-        # Checks to see if we are writing a list of values
-        for key in data:
-            self.column_file_objects[key].write(str(data[key]) + '\n')
-            self.column_file_objects[key].close()
-
-    def close(self):
-        for key in self.column_file_objects:
-            self.column_file_objects[key].close()
+METASUFFIX='-metadata'
+META_TYPE = "json"
+COLUMNFILETYPE='txt'
+CONTEXT = ["http://www.w3.org/ns/csvw"]
+            
+def write(datasetName, location):
+    colCounter = 0
+    #TODO: check if legit dataset
+    dataLoc = 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/'+datasetName+'.csv'
+    dataset = pd.read_csv(dataLoc)
+    tableArray = []
+    colArray = []
+    for colName, col in dataset.items():
+        colArray.append({'url': colName, 'titles': colName, 'datatype': str(dataset.dtypes[colName].name)})
+        with open(colName+'.'+COLUMNFILETYPE, 'w') as colWrite:
+            for value in col:
+                colWrite.write(str(value)+"\n")
+    tableArray.append({'url':[datasetName+'.csv'], 'tableSchema':{'columns':colArray}})
+    jsonDictionary = { '@context': CONTEXT, 'tables':tableArray}
+    with open(datasetName+METASUFFIX+'.'+META_TYPE, 'w') as file:
+        json.dump(jsonDictionary, file, ensure_ascii=False, indent=2)
