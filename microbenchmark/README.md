@@ -29,19 +29,25 @@ seconds on average to finish its. It is an over 100 times faster than
 
 ![](threecolumnsec.png)<!-- -->
 
-![](tencolunsec.png)<!-- -->
+![](tencolumnsec.png)<!-- -->
 
 Even when reading more columns, on average, `read.ctf` is much faster
-than `read.csv` and `read.csv.raw`. While the more column mean a long
+than `read.csv` and `read.csv.raw`. While more column will result in a longer
 read time for `read.ctf`, for the other two, despite reading more
 columns, takes a similar amount of time to read the columns no matter
 how many columns is selected, around 15 seconds for `read.csv.raw` and
-around 40 seconds for `read.csv`.
+around 40 seconds for `read.csv`. This is due to both requiring a read 
+of the entire dataset then filtering to the selected columns.
+`read.ctf` is able to sidestep reading the entire dataset and only 
+read the selected column. Since each column is stored as its own file in CTF, 
+there is no need to read the entire dataset and filter to the selected 
+columns as `read.ctf` directly reads the selected columns.
 
+## Comparing read speed for the entire dataset
 ![](allcolumnsec.png)<!-- -->
 
 When reading in the entire dataset, `read.ctf` is slightly slower than
 `read.csv.raw` taking 15.3 seconds on average to read the entire dataset
-while `read.csv.raw` took 14.5 seconds on average. Due to an outline,
+while `read.csv.raw` took 14.5 seconds on average. Due to an outlier,
 `read.csv` took about 44 seconds on average to read but without it the
-average read time would be around 40 seconds.
+average read time would be closer to 40 seconds. 
