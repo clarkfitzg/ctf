@@ -90,18 +90,60 @@ head(iris2)
 head(iris)
 ```
 
-We can read only desired columns, similar to select. And we can choose the number of rows to display, similar to head.
+We can read only desired columns or choose the number of rows to display.
 
 ```{R}
-iris2 <- read.ctf(location = d,c("Sepal.Width", "Petal.Length"), nrows = 10)
+iris2 <- read.ctf(location = d, c("Sepal.Width", "Petal.Length"), nrows = 10)
 iris2
 ```
 
 Or equivalently we may select columns by number.
 
 ```{R}
-iris2 <- read.ctf(location = d,c(2,3), nrows = 10)
+iris2 <- read.ctf(location = d, c(2,3), nrows = 10)
 iris2
+```
+
+```{R, include = FALSE}
+# # Functionality for chunking exists. Let's break iris into chunks, then reassemble it into a CTF file.
+# 
+# iris_part1 <- iris[1:50,]
+# iris_part2 <- iris[51:100,]
+# iris_part3 <- iris[101:150,]
+# 
+# a <- file.path(tempdir(), "iris_ctf_data2")
+# 
+# write.ctf(iris_part1, a)
+# write.ctf(iris_part2, a, appendRows = TRUE)
+# write.ctf(iris_part3, a, appendRows = TRUE)
+# 
+# # These are equivalent.
+# 
+# iris2 <- read.ctf(a)
+# iris == iris2
+# 
+# # Clean up
+# unlink(a, recursive = TRUE)
+```
+
+
+
+```{R, include = FALSE}
+# # Conversion between ctf and csv is supported
+# 
+# to_csv(d)
+# 
+# # Verify it worked
+# iris3 <- read.csv("iris_ctf_data.csv")
+# 
+# # Write it back to ctf
+# to_ctf(iris2)
+# 
+# # Verify it worked
+# iris4 <- read.ctf("iris2_ctf_data")
+# 
+# # Verify they are equivalent
+# iris3 == iris4
 ```
 
 Clean up:

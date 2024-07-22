@@ -1,0 +1,63 @@
+<mxfile host="app.diagrams.net" modified="2024-07-15T05:50:20.639Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" version="24.6.5" etag="JoNUpuWKqeE8_K9t9Y0L" type="device">
+  <diagram name="Page-1" id="zPxkarRjumX2kYX-f9Hx">
+    <mxGraphModel dx="1434" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="sq8EaYmQ5kG2VpNq-IUX-2" target="sq8EaYmQ5kG2VpNq-IUX-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-2" value="&lt;div&gt;Call read.ctf&lt;/div&gt;&lt;div&gt;location&lt;/div&gt;&lt;div&gt;columns&lt;/div&gt;&lt;div&gt;nrows&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="15" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-6" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="sq8EaYmQ5kG2VpNq-IUX-3" target="sq8EaYmQ5kG2VpNq-IUX-5" edge="1">
+          <mxGeometry x="-0.1429" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-8" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="sq8EaYmQ5kG2VpNq-IUX-3" target="sq8EaYmQ5kG2VpNq-IUX-7" edge="1">
+          <mxGeometry x="-0.6471" y="15" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-3" value="location is ctf directory" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="20" y="130" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-9" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sq8EaYmQ5kG2VpNq-IUX-5" edge="1">
+          <mxGeometry x="-0.8586" y="15" relative="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+            <mxPoint x="171" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b0cHHX1UfcxXuybakctm-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="sq8EaYmQ5kG2VpNq-IUX-5" target="sq8EaYmQ5kG2VpNq-IUX-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-5" value="location is a metadata .json" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="22.5" y="290" width="105" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-11" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="sq8EaYmQ5kG2VpNq-IUX-7" target="sq8EaYmQ5kG2VpNq-IUX-10" edge="1">
+          <mxGeometry y="15" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-13" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="sq8EaYmQ5kG2VpNq-IUX-7" target="sq8EaYmQ5kG2VpNq-IUX-12" edge="1">
+          <mxGeometry y="15" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-7" value="selected columns exist" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="215" y="130" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-10" value="&lt;div&gt;error&lt;/div&gt;&lt;div&gt;column names don&#39;t match&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="210" y="315" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-12" value="read nrows of selected columns into data frame" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="385" y="157.5" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sq8EaYmQ5kG2VpNq-IUX-14" value="&lt;div&gt;error&lt;/div&gt;&lt;div&gt;location not valid CTF&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="10" y="450" width="130" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
