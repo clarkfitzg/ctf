@@ -21,8 +21,8 @@
 #' file.remove("vgsales.csv")
 to_csv = function(ctfpath, columns, nrows)
 {
-	  df = read.ctf(ctfpath, columns, nrows)
-  name = basename(ctfpath)
-    filename = paste0(name, ".csv")
-    write.csv(df, filename, row.names = FALSE)
+	df = read.ctf(ctfpath, columns, nrows)
+	name = basename(ctfpath)
+	filename = paste0(name, ".csv")
+	write.csv(df, filename, row.names = FALSE)
 }
