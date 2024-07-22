@@ -3,7 +3,6 @@ __version__ = '0.0.1'
 
 from .reader import *
 from .writer import *
-
 # passthrough to make column_text_format.reader() return a Reader object
 def reader(*args, **kwargs):
     return Reader(*args, **kwargs)

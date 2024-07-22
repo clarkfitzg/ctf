@@ -1,10 +1,13 @@
 import os, json
 from .column import Column
 from .file_management import list_files, get_file_name
+import json
+import pandas as pd
 
 METASUFFIX='-metadata'
 META_TYPE = "json"
 COLUMNFILETYPE='txt'
+CONTEXT = ["http://www.w3.org/ns/csvw"]
             
 def write(datasetName, location):
     colCounter = 0

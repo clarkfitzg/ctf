@@ -9,7 +9,6 @@ import pandas as pd
 METASUFFIX='-metadata'
 META_TYPE = "json"
 NEWLINE = "\n"
-CONTEXT = ["http://www.w3.org/ns/csvw"]
 
 def findMeta(location):
     metafile = None
@@ -27,8 +26,8 @@ def findMeta(location):
     return metafile
 
 #Read a ctf metadata file to create a dataframe. It will read nrows rows from each column file. 
-def read(location, columns, numRows):
-    if name.endswith(METASUFFIX+'.'+META_TYPE):
+def read(location, columns, numRows=None):
+    if location.endswith(METASUFFIX+'.'+META_TYPE):
         metafile = location
     else:
         metafile = findMeta(location)
