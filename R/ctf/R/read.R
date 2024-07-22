@@ -56,9 +56,13 @@ read.ctf = function(location, columns, nrows)
     metatypes = sapply(colschema, `[[`, "datatype")
     type_iotools = map_types(metatypes, to = "type_iotools")
 
-    if(missing(nrows)){
-        # TODO: handle missing in metadata
+    if(missing(nrows)){ 
+        # If we know the row count, then we use it.
         nrows = meta[["tables"]][[1]][["rowCount"]]
+        # if not, then we read everything in.
+        # TODO: if(if.null(nrows)){
+        #.  nrows = ... TODO ...
+        #}
     }
 
     columns = Map(read_one_col, con = colfiles, type = type_iotools, nrows = nrows)
